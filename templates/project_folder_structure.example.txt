@@ -1,0 +1,10 @@
+projects/
+  └── {project_id}/
+      ├── brand_dna.json
+      ├── scenarios.json
+      ├── prototypes.json
+      ├── registry_refusals.json
+      ├── narrative_system.json
+      └── guardian_reports/
+          ├── 2026_Q1.json
+          └── 2026_Q2.json

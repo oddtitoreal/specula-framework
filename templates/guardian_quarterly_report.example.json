@@ -1,0 +1,16 @@
+{
+  "guardian_report": {
+    "quarter": "Q1 2026",
+    "scenario_alignment": {
+      "confirming": ["..."],
+      "contradicting": ["..."],
+      "emerging": ["..."]
+    },
+    "coherence": {
+      "consistent": ["..."],
+      "inconsistent": ["..."]
+    },
+    "divergence_level": "noise|drift|rupture",
+    "recommended_action": "monitor|correct|re_speculate"
+  }
+}

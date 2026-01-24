@@ -1,0 +1,11 @@
+{
+  "meta": {
+    "artifact_id": "uuid",
+    "phase": "0|1|1.5|2|3|4|5|6",
+    "mode": "exploration|convergence|evaluation|guardian",
+    "generated_at": "ISO-8601",
+    "validated_by_human": false,
+    "related_artifacts": ["artifact_id"]
+  },
+  "payload": {}
+}
