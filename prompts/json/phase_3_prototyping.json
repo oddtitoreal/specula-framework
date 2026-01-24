@@ -1,0 +1,13 @@
+{
+  "phase": 3,
+  "mode": "evaluation",
+  "goal": "Stress-test identity and apply ethical gate",
+  "input_required": [
+    "scenarios",
+    "brand_dna"
+  ],
+  "output_expected": [
+    "prototypes",
+    "refusal_register"
+  ]
+}

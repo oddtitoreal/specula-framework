@@ -1,0 +1,13 @@
+{
+  "phase": 0,
+  "mode": "activation",
+  "goal": "Shift AI from executor to maieutic device",
+  "input_required": [
+    "project_name",
+    "brand_name"
+  ],
+  "output_expected": [
+    "activation_confirmation",
+    "next_phase_question"
+  ]
+}

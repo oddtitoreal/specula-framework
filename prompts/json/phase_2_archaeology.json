@@ -1,0 +1,11 @@
+{
+  "phase": 2,
+  "mode": "archaeology",
+  "goal": "Surface non-negotiable identity",
+  "input_required": [
+    "brand_materials"
+  ],
+  "output_expected": [
+    "brand_dna"
+  ]
+}

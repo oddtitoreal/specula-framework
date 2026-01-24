@@ -1,0 +1,11 @@
+{
+  "phase": 4,
+  "mode": "synthesis",
+  "goal": "Build adaptive narrative grammar",
+  "input_required": [
+    "validated_prototypes"
+  ],
+  "output_expected": [
+    "narrative_system"
+  ]
+}
