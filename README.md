@@ -25,4 +25,4 @@ See `specs/precedence.md` and `specs/terminology.md`.
 ## Versioning
 See `specs/versioning.md` and `CHANGELOG.md`.
 
-> Delivery date: 2026-01-24
+> Delivery date: 2026-01-04
