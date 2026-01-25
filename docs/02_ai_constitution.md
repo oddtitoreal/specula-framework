@@ -1,5 +1,8 @@
 # SPECULA AI CONSTITUTION
 
+Version: 1.0
+Date: 2026-01-24
+
 ## Governance and Operational Principles of SPECULA Artificial Intelligence
 
 This document defines the **Constitution of SPECULA AI**.

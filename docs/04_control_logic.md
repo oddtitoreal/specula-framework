@@ -1,5 +1,8 @@
 # SPECULA AI – CONTROL LOGIC AND STATE MACHINE
 
+Version: 1.0
+Date: 2026-01-24
+
 This document defines the **control logic**, **state machine**, and **governance rules** that regulate how SPECULA AI operates across phases.
 
 It specifies **when** the system can advance, **when it must stop**, and **when human intervention is mandatory**.

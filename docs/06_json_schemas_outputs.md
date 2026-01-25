@@ -1,5 +1,8 @@
 # SPECULA AI – JSON SCHEMAS AND OUTPUT ARCHITECTURE
 
+Version: 1.0
+Date: 2026-01-24
+
 This document defines, in a **formal and normative** way:
 
 * the **input JSON schemas** for each SPECULA phase
@@ -22,7 +25,7 @@ All SPECULA schemas comply with the following rules:
 
 1. **Phase-bound**: each JSON belongs to a specific phase
 2. **Append-only**: outputs never overwrite; they generate new artifacts
-3. **Traceable**: every object has `id`, `timestamp`, `source_phase`
+3. **Traceable**: every object has `artifact_id`, `generated_at`, `phase`
 4. **Human-validated**: no critical output is valid without human confirmation
 5. **Non-oracular**: outputs must never contain `decision=true`
 
@@ -37,7 +40,7 @@ Every SPECULA output must include the following wrapper:
   "meta": {
     "artifact_id": "uuid",
     "phase": "0|1|1.5|2|3|4|5|6",
-    "mode": "exploration|convergence|evaluation|guardian",
+    "mode": "exploration|convergence|brand_archaeology|prototyping|ethical_gate|refusal_register|narrative_synthesis|community_cocreation|guardian|cognitive_sparring|sensemaking|slowdown|refusal",
     "generated_at": "ISO-8601",
     "validated_by_human": false,
     "related_artifacts": ["artifact_id"]
@@ -57,7 +60,7 @@ Every SPECULA output must include the following wrapper:
   "project_name": "string",
   "brand_name": "string",
   "sector": "string",
-  "starting_phase": "0|1|2|3|4|5|6",
+  "starting_phase": "0|1|1.5|2|3|4|5|6",
   "team_context": {
     "stakeholders": ["string"],
     "decision_authority": "string",

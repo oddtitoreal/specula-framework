@@ -1,5 +1,8 @@
 # Versioning policy
 
+Version: 1.0
+Date: 2026-01-24
+
 ## Documents
 - Normative documents (Foundations, Constitution, Governance, Control Logic, Schemas) use **SemVer**: `MAJOR.MINOR`.
   - MAJOR: breaking conceptual/governance change

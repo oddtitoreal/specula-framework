@@ -1,5 +1,8 @@
 # Specula Method v2.3
 
+Version: 2.3
+Date: 2026-01-24
+
 ## Executive Summary
 
 Specula is a method of **Strategic Foresight Branding**—a discipline that uses futures as tools to build living, adaptive brand identities oriented toward preferable scenarios. It emerges at the intersection of speculative design, brand strategy, and generative artificial intelligence, with a simple goal: helping organizations and teams imagine possible worlds and transform those visions into decisions, prototypes, and operational narratives.

@@ -1,5 +1,8 @@
 # Normative precedence
 
+Version: 1.0
+Date: 2026-01-24
+
 When documents conflict, apply this precedence order:
 
 1. **Base Document — Foundations of the SPECULA Method**

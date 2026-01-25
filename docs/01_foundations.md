@@ -1,5 +1,8 @@
 # FOUNDATIONS OF THE SPECULA METHOD
 
+Version: 1.0
+Date: 2026-01-24
+
 This document represents the **foundational base** of the SPECULA method.
 
 It is not an operational manual, nor a prompt playbook.

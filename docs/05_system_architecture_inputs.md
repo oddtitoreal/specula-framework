@@ -1,5 +1,8 @@
 # SPECULA AI – SYSTEM ARCHITECTURE AND INPUT SPECIFICATIONS
 
+Version: 1.0
+Date: 2026-01-24
+
 This document provides a **formal, implementation-oriented specification** of the SPECULA AI system architecture, with a specific focus on **input requirements, AI processes, and phase-specific outputs**.
 
 It complements *“SPECULA AI – JSON Schemas and Output Architecture”* and should be treated as its **normative counterpart for system design and training**.
@@ -364,7 +367,7 @@ In case of conflict, **output schemas take precedence over process descriptions*
     {
       "role": "user|assistant",
       "content": "string",
-      "cognitive_mode": "divergent|convergent|evaluative|maieutic",
+      "cognitive_mode": "exploration|convergence|ethical_gate|maieutic",
       "quality_score": "1–5",
       "annotations": { ... }
     }

@@ -1,5 +1,8 @@
 # SPECULA PROMPT PLAYBOOK v1.0
 
+Version: 1.0
+Date: 2026-01-24
+
 ## Operational Prompt System for Strategic Foresight Branding
 
 ---
