@@ -16,6 +16,8 @@ All notable changes to this repository are documented here.
 - Added MVP persistence schema for Refusal Register and Guardian.
 - Updated documentation index to include implementation docs.
 - Added case-saponaria directory placeholder for case artifacts.
+- Added Specula Method Agent Protocol overview document.
+- Updated README and docs index to include the agent protocol.
 
 ## 2026-01-24
 - Repository structure created.

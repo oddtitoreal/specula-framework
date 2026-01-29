@@ -9,6 +9,7 @@
 6. [JSON Schemas & Output Architecture](06_json_schemas_outputs.md)
 7. [Prompt Playbook v1.0](07_prompt_playbook_v1.md)
 8. [Specula Method v2.3](08_specula_method_v2_3.md)
+9. [Specula Method Agent Protocol](13_specula_method_agent.md)
 
 ## Governance specs
 - [Normative precedence](../specs/precedence.md)

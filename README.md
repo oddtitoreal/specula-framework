@@ -11,6 +11,7 @@ This repository is a **private client delivery** of the SPECULA documentation se
 6. JSON Schemas & Output Architecture
 7. Prompt Playbook v1.0
 8. Specula Method v2.3
+9. Specula Method Agent Protocol
 
 ## Repository map
 - `docs/` — canonical documents (human-readable)
