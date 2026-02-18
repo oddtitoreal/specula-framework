@@ -1,0 +1,92 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://specula.local/schemas/phase6_guardian.schema.json",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["meta", "payload"],
+  "properties": {
+    "meta": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "artifact_id",
+        "phase",
+        "mode",
+        "generated_at",
+        "validated_by_human",
+        "related_artifacts"
+      ],
+      "properties": {
+        "artifact_id": { "type": "string", "minLength": 1 },
+        "phase": { "const": "6" },
+        "mode": { "const": "guardian" },
+        "generated_at": { "type": "string", "format": "date-time" },
+        "validated_by_human": { "const": false },
+        "related_artifacts": {
+          "type": "array",
+          "items": { "type": "string", "minLength": 1 }
+        }
+      }
+    },
+    "payload": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["guardian_report"],
+      "properties": {
+        "guardian_report": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "quarter",
+            "scenario_alignment",
+            "coherence",
+            "divergence_level",
+            "recommended_action"
+          ],
+          "properties": {
+            "quarter": { "type": "string", "minLength": 1 },
+            "scenario_alignment": {
+              "type": "object",
+              "additionalProperties": false,
+              "required": ["confirming", "contradicting", "emerging"],
+              "properties": {
+                "confirming": {
+                  "type": "array",
+                  "items": { "type": "string", "minLength": 1 }
+                },
+                "contradicting": {
+                  "type": "array",
+                  "items": { "type": "string", "minLength": 1 }
+                },
+                "emerging": {
+                  "type": "array",
+                  "items": { "type": "string", "minLength": 1 }
+                }
+              }
+            },
+            "coherence": {
+              "type": "object",
+              "additionalProperties": false,
+              "required": ["consistent", "inconsistent"],
+              "properties": {
+                "consistent": {
+                  "type": "array",
+                  "items": { "type": "string", "minLength": 1 }
+                },
+                "inconsistent": {
+                  "type": "array",
+                  "items": { "type": "string", "minLength": 1 }
+                }
+              }
+            },
+            "divergence_level": { "type": "string", "enum": ["noise", "drift", "rupture"] },
+            "recommended_action": {
+              "type": "string",
+              "enum": ["monitor", "correct", "re_speculate"]
+            }
+          }
+        }
+      }
+    }
+  }
+}

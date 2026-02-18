@@ -1,0 +1,7 @@
+.venv/
+.pytest_cache/
+__pycache__/
+*.pyc
+.specula_state.json
+.specula_step.json
+.DS_Store

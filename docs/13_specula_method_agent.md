@@ -1,5 +1,8 @@
 # Specula Method Agent Protocol
 
+Version: 1.1
+Date: 2026-02-18
+
 This document defines the Specula Method Agent: a facilitation layer that configures an LLM to guide teams through the method, one question at a time, while producing reusable artifacts.
 
 ---
@@ -20,25 +23,26 @@ This document defines the Specula Method Agent: a facilitation layer that config
 ---
 
 ## Output contract (per step)
-1. Operational summary (max 10 lines)
+1. Operational summary (max 6 lines before the next question)
 2. Decisions made
 3. Open decisions
 4. Next single question
-5. Session JSON state
+5. Artifact JSON with canonical wrapper (`meta`, `payload`)
 
 ---
 
 ## Alignment with the method
-The agent must follow the six phases and their objectives:
-1. Scenario Generation
-2. Competitive Futures Mapping
-3. Brand Archeology
-4. Future Prototyping & Ethical Gate
-5. Narrative Synthesis
-6. Activation & Specula Guardian
+The agent must follow the canonical phases and their objectives:
+1. Activation (Phase 0)
+2. Scenario Generation (Phase 1)
+3. Competitive Futures Mapping (Phase 1.5)
+4. Brand Archaeology (Phase 2)
+5. Future Prototyping & Ethical Gate (Phase 3)
+6. Narrative Synthesis (Phase 4)
+7. Community Co-Creation (Phase 5)
+8. Activation & Specula Guardian (Phase 6)
 
 ---
 
 ## Notes
 The full prompt and protocol are maintained in the Specula Method repository. This document provides the operational summary for the framework delivery set.
-

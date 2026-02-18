@@ -1,0 +1,84 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://specula.local/schemas/phase1_5_competitive_map.schema.json",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["meta", "payload"],
+  "properties": {
+    "meta": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "artifact_id",
+        "phase",
+        "mode",
+        "generated_at",
+        "validated_by_human",
+        "related_artifacts"
+      ],
+      "properties": {
+        "artifact_id": { "type": "string", "minLength": 1 },
+        "phase": { "const": "1.5" },
+        "mode": { "const": "convergence" },
+        "generated_at": { "type": "string", "format": "date-time" },
+        "validated_by_human": { "const": false },
+        "related_artifacts": {
+          "type": "array",
+          "items": { "type": "string", "minLength": 1 }
+        }
+      }
+    },
+    "payload": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["competitive_map", "white_spaces"],
+      "properties": {
+        "competitive_map": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "competitor",
+              "future_trajectory",
+              "occupied_territory",
+              "ignored_territories",
+              "confidence_level"
+            ],
+            "properties": {
+              "competitor": { "type": "string", "minLength": 1 },
+              "future_trajectory": { "type": "string", "minLength": 1 },
+              "occupied_territory": { "type": "string", "minLength": 1 },
+              "ignored_territories": {
+                "type": "array",
+                "items": { "type": "string", "minLength": 1 }
+              },
+              "confidence_level": { "type": "string", "enum": ["low", "medium", "high"] }
+            }
+          }
+        },
+        "white_spaces": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "white_space_id",
+              "description",
+              "strategic_risk",
+              "alignment_with_brand"
+            ],
+            "properties": {
+              "white_space_id": { "type": "string", "minLength": 1 },
+              "description": { "type": "string", "minLength": 1 },
+              "strategic_risk": { "type": "string", "enum": ["low", "medium", "high"] },
+              "alignment_with_brand": { "type": "string", "enum": ["low", "medium", "high"] }
+            }
+          }
+        }
+      }
+    }
+  }
+}

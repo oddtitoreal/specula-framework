@@ -1,0 +1,51 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://specula.local/schemas/phase0_activation.schema.json",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["meta", "payload"],
+  "properties": {
+    "meta": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "artifact_id",
+        "phase",
+        "mode",
+        "generated_at",
+        "validated_by_human",
+        "related_artifacts"
+      ],
+      "properties": {
+        "artifact_id": { "type": "string", "minLength": 1 },
+        "phase": { "const": "0" },
+        "mode": { "const": "sensemaking" },
+        "generated_at": { "type": "string", "format": "date-time" },
+        "validated_by_human": { "const": false },
+        "related_artifacts": {
+          "type": "array",
+          "items": { "type": "string", "minLength": 1 }
+        }
+      }
+    },
+    "payload": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "activation_status",
+        "current_phase",
+        "context_set",
+        "next_required_input"
+      ],
+      "properties": {
+        "activation_status": { "const": "active" },
+        "current_phase": {
+          "type": "number",
+          "enum": [0, 1, 1.5, 2, 3, 4, 5, 6]
+        },
+        "context_set": { "type": "boolean" },
+        "next_required_input": { "type": "string", "minLength": 1 }
+      }
+    }
+  }
+}

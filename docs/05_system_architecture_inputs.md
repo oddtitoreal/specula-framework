@@ -42,7 +42,7 @@ In case of conflict, **output schemas take precedence over process descriptions*
   "project_name": "string",
   "brand_name": "string",
   "sector": "string",
-  "starting_phase": "1|2|3|4|5|6",
+  "starting_phase": "0|1|1.5|2|3|4|5|6",
   "team_context": {
     "stakeholders": ["string"],
     "decision_authority": "string",
@@ -97,12 +97,18 @@ In case of conflict, **output schemas take precedence over process descriptions*
 {
   "scenarios": [
     {
-      "id": "string",
+      "scenario_id": "string",
       "name": "string",
-      "drivers": ["string"],
+      "time_horizon": "5|10|20",
+      "drivers": [
+        {
+          "type": "tech|cultural|economic|environmental|regulatory",
+          "description": "string"
+        }
+      ],
       "description": "string",
-      "type": "preferred|feared|wild_card|negative",
-      "question": "string",
+      "scenario_type": "preferred|feared|wild_card|negative",
+      "maieutic_question": "string",
       "user_response": null
     }
   ]
@@ -152,13 +158,12 @@ In case of conflict, **output schemas take precedence over process descriptions*
   ],
   "white_spaces": [
     {
-      "id": "string",
+      "white_space_id": "string",
       "description": "string",
-      "why_empty": "string",
+      "strategic_risk": "low|medium|high",
       "alignment_with_brand": "low|medium|high"
     }
-  ],
-  "recommended_territory": "string"
+  ]
 }
 ```
 
@@ -210,8 +215,7 @@ In case of conflict, **output schemas take precedence over process descriptions*
 
 ```json
 {
-  "brand_dna": { ... },
-  "archaeology_transcript": "string"
+  "brand_dna": { ... }
 }
 ```
 
@@ -241,8 +245,15 @@ In case of conflict, **output schemas take precedence over process descriptions*
 
 ```json
 {
-  "prototypes": [ ... ],
-  "registry_of_refusals": [ ... ]
+  "prototypes": [ ... ]
+}
+```
+
+#### Output (Refusal Register artifact in Phase 3)
+
+```json
+{
+  "refusals": [ ... ]
 }
 ```
 
@@ -256,7 +267,7 @@ In case of conflict, **output schemas take precedence over process descriptions*
 {
   "validated_prototypes": "from Phase 3",
   "brand_dna": "from Phase 2",
-  "registry_of_refusals": "from Phase 3",
+  "refusals": "from Phase 3",
   "scenarios": "from Phase 1"
 }
 ```
@@ -303,8 +314,7 @@ In case of conflict, **output schemas take precedence over process descriptions*
 
 ```json
 {
-  "co_creation_insights": { ... },
-  "updated_narrative_system": { ... }
+  "co_creation": { ... }
 }
 ```
 
@@ -319,7 +329,7 @@ In case of conflict, **output schemas take precedence over process descriptions*
   "brand_dna": "from Phase 2",
   "scenarios": "from Phase 1",
   "narrative_system": "from Phase 4",
-  "registry_of_refusals": "from Phase 3",
+  "refusals": "from Phase 3",
   "current_signals": [ ... ],
   "current_kpis": { ... },
   "decisions_log": [ ... ]
@@ -337,8 +347,7 @@ In case of conflict, **output schemas take precedence over process descriptions*
 
 ```json
 {
-  "guardian_report": { ... },
-  "re_speculation_triggered": "boolean"
+  "guardian_report": { ... }
 }
 ```
 

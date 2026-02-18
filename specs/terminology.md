@@ -1,5 +1,8 @@
 # Terminology (canonical)
 
+Version: 1.1
+Date: 2026-02-18
+
 Use these terms consistently across docs, prompts, schemas, and implementation.
 
 ## Core terms

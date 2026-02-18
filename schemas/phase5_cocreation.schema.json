@@ -1,0 +1,87 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://specula.local/schemas/phase5_cocreation.schema.json",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["meta", "payload"],
+  "properties": {
+    "meta": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "artifact_id",
+        "phase",
+        "mode",
+        "generated_at",
+        "validated_by_human",
+        "related_artifacts"
+      ],
+      "properties": {
+        "artifact_id": { "type": "string", "minLength": 1 },
+        "phase": { "const": "5" },
+        "mode": { "const": "community_cocreation" },
+        "generated_at": { "type": "string", "format": "date-time" },
+        "validated_by_human": { "const": false },
+        "related_artifacts": {
+          "type": "array",
+          "items": { "type": "string", "minLength": 1 }
+        }
+      }
+    },
+    "payload": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["co_creation"],
+      "properties": {
+        "co_creation": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "consensus_areas",
+            "divergences",
+            "accepted_changes",
+            "rejected_changes",
+            "dissent_log"
+          ],
+          "properties": {
+            "consensus_areas": {
+              "type": "array",
+              "items": { "type": "string", "minLength": 1 }
+            },
+            "divergences": {
+              "type": "array",
+              "items": {
+                "type": "object",
+                "additionalProperties": false,
+                "required": ["topic", "positions", "minority_voices"],
+                "properties": {
+                  "topic": { "type": "string", "minLength": 1 },
+                  "positions": {
+                    "type": "array",
+                    "items": { "type": "string", "minLength": 1 }
+                  },
+                  "minority_voices": {
+                    "type": "array",
+                    "items": { "type": "string", "minLength": 1 }
+                  }
+                }
+              }
+            },
+            "accepted_changes": {
+              "type": "array",
+              "items": { "type": "string", "minLength": 1 }
+            },
+            "rejected_changes": {
+              "type": "array",
+              "items": { "type": "string", "minLength": 1 }
+            },
+            "dissent_log": {
+              "type": "array",
+              "items": { "type": "string", "minLength": 1 }
+            }
+          }
+        }
+      }
+    }
+  }
+}

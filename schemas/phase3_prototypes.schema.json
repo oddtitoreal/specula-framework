@@ -1,0 +1,89 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://specula.local/schemas/phase3_prototypes.schema.json",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["meta", "payload"],
+  "properties": {
+    "meta": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "artifact_id",
+        "phase",
+        "mode",
+        "generated_at",
+        "validated_by_human",
+        "related_artifacts"
+      ],
+      "properties": {
+        "artifact_id": { "type": "string", "minLength": 1 },
+        "phase": { "const": "3" },
+        "mode": { "type": "string", "enum": ["prototyping", "ethical_gate"] },
+        "generated_at": { "type": "string", "format": "date-time" },
+        "validated_by_human": { "const": false },
+        "related_artifacts": {
+          "type": "array",
+          "items": { "type": "string", "minLength": 1 }
+        }
+      }
+    },
+    "payload": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["prototypes"],
+      "properties": {
+        "prototypes": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "prototype_id",
+              "scenario_id",
+              "description",
+              "role_in_future",
+              "stakeholder_impact",
+              "ethical_gate"
+            ],
+            "properties": {
+              "prototype_id": { "type": "string", "minLength": 1 },
+              "scenario_id": { "type": "string", "minLength": 1 },
+              "description": { "type": "string", "minLength": 1 },
+              "role_in_future": { "type": "string", "minLength": 1 },
+              "stakeholder_impact": {
+                "type": "object",
+                "additionalProperties": false,
+                "required": ["winners", "losers"],
+                "properties": {
+                  "winners": {
+                    "type": "array",
+                    "items": { "type": "string", "minLength": 1 }
+                  },
+                  "losers": {
+                    "type": "array",
+                    "items": { "type": "string", "minLength": 1 }
+                  }
+                }
+              },
+              "ethical_gate": {
+                "type": "object",
+                "additionalProperties": false,
+                "required": ["status", "violated_values", "systemic_impact"],
+                "properties": {
+                  "status": { "type": "string", "enum": ["PASS", "FAIL", "HOLD"] },
+                  "violated_values": {
+                    "type": "array",
+                    "items": { "type": "string", "minLength": 1 }
+                  },
+                  "systemic_impact": { "type": "string", "enum": ["aligned", "misaligned"] }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
