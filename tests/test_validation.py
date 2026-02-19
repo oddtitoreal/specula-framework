@@ -1,10 +1,24 @@
 from specula_agent.orchestrator import ProjectState, SpeculaOrchestrator
 from specula_agent.policy import validate_assistant_text
 from specula_agent.schemas import validate_artifact
+from specula_agent.constants import PHASE_SEQUENCE
+
+
+def _seed_prerequisites(state: ProjectState, phase: str) -> None:
+    index = PHASE_SEQUENCE.index(phase)
+    for prereq in PHASE_SEQUENCE[:index]:
+        artifact_id = f"validated-{prereq}"
+        state.phase_validated_artifacts[prereq] = artifact_id
+        state.latest_artifacts[prereq] = artifact_id
+        state.artifact_index[artifact_id] = {
+            "meta": {"artifact_id": artifact_id, "phase": prereq, "mode": "sensemaking"},
+            "payload": {},
+        }
 
 
 def _make_artifact(phase: str):
     state = ProjectState(project_id="project-test", current_phase=phase)
+    _seed_prerequisites(state, phase)
     orchestrator = SpeculaOrchestrator(state)
     result = orchestrator.generate_step(user_input="test input", phase=phase)
     return result["artifact"], result["assistant_text"]
@@ -14,6 +28,18 @@ def test_schema_validation_passes_for_all_default_phases():
     for phase in ("0", "1", "1.5", "2", "3", "4", "5", "6"):
         artifact, _ = _make_artifact(phase)
         assert validate_artifact(artifact, current_phase=phase) == []
+
+
+def test_schema_validation_passes_for_phase3_refusal_mode():
+    state = ProjectState(project_id="project-test", current_phase="3")
+    _seed_prerequisites(state, "3")
+    orchestrator = SpeculaOrchestrator(state)
+    result = orchestrator.generate_step(
+        user_input="log a refusal",
+        phase="3",
+        mode="refusal_register",
+    )
+    assert validate_artifact(result["artifact"], current_phase="3") == []
 
 
 def test_phase_consistency_fails_on_mismatch():

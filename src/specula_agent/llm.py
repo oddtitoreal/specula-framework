@@ -6,7 +6,7 @@ import json
 import os
 from dataclasses import dataclass
 from pathlib import Path
-from typing import Optional
+from typing import Any, Dict, Optional
 from urllib.error import HTTPError, URLError
 from urllib.request import Request, urlopen
 
@@ -67,6 +67,7 @@ class LLMClient:
         mode: str,
         user_input: str,
         project_id: str,
+        context_bundle: Dict[str, Any] | None = None,
     ) -> str:
         system_prompt = self._compose_system_prompt()
         user_prompt = self._compose_user_prompt(
@@ -74,6 +75,7 @@ class LLMClient:
             mode=mode,
             user_input=user_input,
             project_id=project_id,
+            context_bundle=context_bundle or {},
         )
 
         provider = self.config.provider.lower()
@@ -91,12 +93,21 @@ class LLMClient:
         return base
 
     @staticmethod
-    def _compose_user_prompt(*, phase: str, mode: str, user_input: str, project_id: str) -> str:
+    def _compose_user_prompt(
+        *,
+        phase: str,
+        mode: str,
+        user_input: str,
+        project_id: str,
+        context_bundle: Dict[str, Any],
+    ) -> str:
+        context_json = json.dumps(context_bundle, ensure_ascii=True)
         return (
             "Generate only the assistant text for one Specula turn.\n"
             f"Project ID: {project_id}\n"
             f"Target phase: {phase}\n"
             f"Target mode: {mode}\n"
+            f"Continuity context: {context_json}\n"
             f"Latest user input: {user_input}\n"
             "Constraints: one question only, no recommendations, no rankings, no decision language."
         )

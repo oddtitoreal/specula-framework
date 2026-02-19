@@ -22,8 +22,11 @@ CREATE TABLE IF NOT EXISTS validations (
   validation_id TEXT PRIMARY KEY,
   artifact_id TEXT NOT NULL REFERENCES artifacts(artifact_id),
   validator_id TEXT NOT NULL,
+  validator_role TEXT NOT NULL,
+  decision TEXT NOT NULL CHECK (decision IN ('approve', 'reject', 'hold')),
   validated_at TIMESTAMP NOT NULL,
-  validated_by_human BOOLEAN NOT NULL
+  validated_by_human BOOLEAN NOT NULL,
+  UNIQUE (artifact_id, validator_id)
 );
 
 CREATE TABLE IF NOT EXISTS refusal_register (
@@ -67,3 +70,6 @@ CREATE INDEX IF NOT EXISTS idx_guardian_project_quarter
 
 CREATE INDEX IF NOT EXISTS idx_audit_project_created
   ON audit_logs(project_id, created_at);
+
+CREATE INDEX IF NOT EXISTS idx_validations_artifact
+  ON validations(artifact_id);

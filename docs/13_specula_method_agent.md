@@ -27,7 +27,8 @@ This document defines the Specula Method Agent: a facilitation layer that config
 2. Decisions made
 3. Open decisions
 4. Next single question
-5. Artifact JSON with canonical wrapper (`meta`, `payload`)
+5. Artifact JSON with canonical wrapper (`meta`, `payload`) and explicit explainability fields (`decision_rationale`, `evidence_refs`, `tradeoffs`, `rejected_alternatives`)
+6. Phase advancement only after at least two human approvals from distinct validator roles
 
 ---
 

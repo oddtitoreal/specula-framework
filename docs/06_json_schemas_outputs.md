@@ -43,7 +43,11 @@ Every SPECULA output must include the following wrapper:
     "mode": "exploration|convergence|brand_archaeology|prototyping|ethical_gate|refusal_register|narrative_synthesis|community_cocreation|guardian|cognitive_sparring|sensemaking|slowdown|refusal",
     "generated_at": "ISO-8601",
     "validated_by_human": false,
-    "related_artifacts": ["artifact_id"]
+    "related_artifacts": ["artifact_id"],
+    "decision_rationale": "string",
+    "evidence_refs": ["string"],
+    "tradeoffs": ["string"],
+    "rejected_alternatives": ["string"]
   },
   "payload": {}
 }
@@ -184,7 +188,17 @@ Every SPECULA output must include the following wrapper:
       "ethical_gate": {
         "status": "PASS|FAIL|HOLD",
         "violated_values": ["string"],
-        "systemic_impact": "aligned|misaligned"
+        "systemic_impact": "aligned|misaligned",
+        "question_1_value_violation_rationale": "string",
+        "question_2_harmful_practice_rationale": "string",
+        "question_3_unacceptable_dependency_rationale": "string",
+        "reviewer_decision_refs": [
+          {
+            "validator_role": "string",
+            "decision": "approve|reject|hold",
+            "reference": "string"
+          }
+        ]
       }
     }
   ]
@@ -202,7 +216,19 @@ Every SPECULA output must include the following wrapper:
       "violated_value": "string",
       "opportunity_cost": "string",
       "identity_signal": "string",
-      "date": "ISO-8601"
+      "date": "ISO-8601",
+      "ethical_gate_assessment": {
+        "question_1_value_violation_rationale": "string",
+        "question_2_harmful_practice_rationale": "string",
+        "question_3_unacceptable_dependency_rationale": "string",
+        "reviewer_decision_refs": [
+          {
+            "validator_role": "string",
+            "decision": "approve|reject|hold",
+            "reference": "string"
+          }
+        ]
+      }
     }
   ]
 }

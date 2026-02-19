@@ -3,6 +3,14 @@
 All notable changes to this repository are documented here.
 
 ## Unreleased
+### 2026-02-19 - governance hardening and explainability contract
+- Enforced phase advancement only after at least two human approvals from distinct validator roles in runtime orchestration (`src/specula_agent/orchestrator.py`, `src/specula_agent/cli.py`).
+- Added validation record governance fields and duplicate-signature prevention in persistence (`validator_role`, `decision`, unique `(artifact_id, validator_id)`) with SQL export alignment (`src/specula_agent/storage.py`, `sql/specula_persistence.sql`).
+- Added continuity memory context and validated-phase prerequisites to prevent out-of-sequence phase generation and improve cross-turn coherence (`src/specula_agent/orchestrator.py`, `src/specula_agent/llm.py`).
+- Extended canonical artifact meta-schema with mandatory explainability fields (`decision_rationale`, `evidence_refs`, `tradeoffs`, `rejected_alternatives`) across all phase schemas in `schemas/`.
+- Strengthened Phase 3 contracts by requiring explicit rationale for each Ethical Gate question and reviewer decision references (`schemas/phase3_prototypes.schema.json`, `schemas/phase3_refusals.schema.json`).
+- Updated normative documentation to reflect the new runtime contract (`docs/06_json_schemas_outputs.md`, `docs/13_specula_method_agent.md`).
+
 ### 2026-02-18 - executable agent MVP enablement
 - Added an executable Python runtime in `src/specula_agent/` with:
   - state-aware orchestrator and phase transition gate (`orchestrator.py`)

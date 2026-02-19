@@ -6,7 +6,7 @@ import json
 from dataclasses import dataclass
 from datetime import datetime, timezone
 from textwrap import dedent
-from typing import Any, Dict, Optional
+from typing import Any, Dict, List, Optional
 from uuid import uuid4
 
 from .orchestrator import ProjectState
@@ -34,8 +34,11 @@ SCHEMA_SQL = dedent(
       validation_id TEXT PRIMARY KEY,
       artifact_id TEXT NOT NULL REFERENCES artifacts(artifact_id),
       validator_id TEXT NOT NULL,
+      validator_role TEXT NOT NULL,
+      decision TEXT NOT NULL CHECK (decision IN ('approve', 'reject', 'hold')),
       validated_at TIMESTAMP NOT NULL,
-      validated_by_human BOOLEAN NOT NULL
+      validated_by_human BOOLEAN NOT NULL,
+      UNIQUE (artifact_id, validator_id)
     );
 
     CREATE TABLE IF NOT EXISTS refusal_register (
@@ -79,6 +82,9 @@ SCHEMA_SQL = dedent(
 
     CREATE INDEX IF NOT EXISTS idx_audit_project_created
       ON audit_logs(project_id, created_at);
+
+    CREATE INDEX IF NOT EXISTS idx_validations_artifact
+      ON validations(artifact_id);
     """
 ).strip()
 
@@ -105,8 +111,13 @@ class StorageAdapter:
         *,
         validated_by_human: bool,
         validator_id: str,
+        validator_role: str,
+        decision: str,
     ) -> None:
         return
+
+    def get_validations(self, artifact_id: str) -> List[Dict[str, Any]]:
+        return []
 
     def append_audit(
         self,
@@ -189,16 +200,59 @@ class PostgresStorage(StorageAdapter):
         *,
         validated_by_human: bool,
         validator_id: str,
+        validator_role: str,
+        decision: str,
     ) -> None:
+        decision_key = decision.lower().strip()
+        if decision_key not in {"approve", "reject", "hold"}:
+            raise StorageError("decision must be approve, reject, or hold")
         with self._connect() as conn:
             with conn.cursor() as cur:
                 cur.execute(
                     """
-                    INSERT INTO validations (validation_id, artifact_id, validator_id, validated_at, validated_by_human)
-                    VALUES (%s, %s, %s, %s, %s)
+                    INSERT INTO validations
+                      (validation_id, artifact_id, validator_id, validator_role, decision, validated_at, validated_by_human)
+                    VALUES (%s, %s, %s, %s, %s, %s, %s)
+                    ON CONFLICT (artifact_id, validator_id) DO NOTHING
                     """,
-                    (str(uuid4()), artifact_id, validator_id, self._utc_now(), validated_by_human),
+                    (
+                        str(uuid4()),
+                        artifact_id,
+                        validator_id,
+                        validator_role,
+                        decision_key,
+                        self._utc_now(),
+                        validated_by_human,
+                    ),
                 )
+                if cur.rowcount == 0:
+                    raise StorageError(
+                        f"duplicate validator signature for artifact `{artifact_id}` and validator `{validator_id}`"
+                    )
+
+    def get_validations(self, artifact_id: str) -> List[Dict[str, Any]]:
+        with self._connect() as conn:
+            with conn.cursor() as cur:
+                cur.execute(
+                    """
+                    SELECT validator_id, validator_role, decision, validated_by_human, validated_at
+                    FROM validations
+                    WHERE artifact_id = %s
+                    ORDER BY validated_at ASC
+                    """,
+                    (artifact_id,),
+                )
+                rows = cur.fetchall()
+        return [
+            {
+                "validator_id": row[0],
+                "validator_role": row[1],
+                "decision": row[2],
+                "validated_by_human": bool(row[3]),
+                "validated_at": row[4].isoformat() if hasattr(row[4], "isoformat") else str(row[4]),
+            }
+            for row in rows
+        ]
 
     def append_audit(
         self,

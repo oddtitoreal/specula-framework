@@ -125,19 +125,44 @@ def _cmd_advance(args: argparse.Namespace) -> int:
     state = _load_state(state_path)
     storage = build_storage(args.database_url)
     storage.init_schema()
-    orchestrator = SpeculaOrchestrator(state)
-    next_phase = orchestrator.advance_after_validation(
-        phase=args.phase,
+    if args.decision == "approve" and not args.validated_by_human:
+        raise ValueError("approve decision requires --validated-by-human")
+
+    state.add_validation_record(
         artifact_id=args.artifact_id,
+        validator_id=args.validator_id,
+        validator_role=args.validator_role,
+        decision=args.decision,
         validated_by_human=args.validated_by_human,
     )
-    _save_json(state_path, state.to_dict())
-    storage.upsert_project_state(state)
+
     storage.insert_validation(
         args.artifact_id,
         validated_by_human=args.validated_by_human,
         validator_id=args.validator_id,
+        validator_role=args.validator_role,
+        decision=args.decision,
     )
+
+    _save_json(state_path, state.to_dict())
+    storage.upsert_project_state(state)
+    storage.append_audit(
+        project_id=state.project_id,
+        phase=args.phase,
+        mode=None,
+        event="VALIDATION_RECORDED",
+        content=(
+            f"validator={args.validator_id}; role={args.validator_role}; "
+            f"decision={args.decision}; human={args.validated_by_human}"
+        ),
+    )
+
+    orchestrator = SpeculaOrchestrator(state)
+    validations = state.validation_snapshot(args.artifact_id)
+    next_phase = orchestrator.advance_after_validation(phase=args.phase, artifact_id=args.artifact_id, validations=validations)
+
+    _save_json(state_path, state.to_dict())
+    storage.upsert_project_state(state)
     storage.append_audit(
         project_id=state.project_id,
         phase=args.phase,
@@ -189,8 +214,14 @@ def _build_parser() -> argparse.ArgumentParser:
     advance.add_argument("--state-file", default=".specula_state.json")
     advance.add_argument("--phase", required=True)
     advance.add_argument("--artifact-id", required=True)
-    advance.add_argument("--validated-by-human", action="store_true")
+    advance.add_argument(
+        "--validated-by-human",
+        action=argparse.BooleanOptionalAction,
+        default=True,
+    )
     advance.add_argument("--validator-id", default="human-validator")
+    advance.add_argument("--validator-role", required=True)
+    advance.add_argument("--decision", choices=["approve", "reject", "hold"], default="approve")
     advance.add_argument("--database-url", default=os.getenv("SPECULA_DATABASE_URL"))
     advance.set_defaults(func=_cmd_advance)
 

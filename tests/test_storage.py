@@ -27,7 +27,21 @@ def test_noop_storage_adapter_methods_are_safe():
             },
         },
     )
-    storage.insert_validation("artifact-1", validated_by_human=True, validator_id="validator")
+    storage.insert_validation(
+        "artifact-1",
+        validated_by_human=True,
+        validator_id="validator",
+        validator_role="strategy_lead",
+        decision="approve",
+    )
+    storage.insert_validation(
+        "artifact-1",
+        validated_by_human=True,
+        validator_id="validator-2",
+        validator_role="ethics_reviewer",
+        decision="approve",
+    )
+    assert storage.get_validations("artifact-1") == []
     storage.append_audit(
         project_id=state.project_id,
         phase="0",
