@@ -1,6 +1,7 @@
-# SPECULA (Private Delivery)
+# SPECULA Framework
 
-This repository is a **private client delivery** of the SPECULA documentation set.
+This repository is the **canonical SPECULA source** for docs, specs, schemas, and runtime profile.
+It originated from a client delivery and is now maintained as the ecosystem reference repository.
 
 ## SPECULA Ecosystem
 
