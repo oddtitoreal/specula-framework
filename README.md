@@ -2,6 +2,27 @@
 
 This repository is a **private client delivery** of the SPECULA documentation set.
 
+## SPECULA Ecosystem
+
+This repository is one of three related SPECULA repositories:
+
+| Repository | Primary purpose | Primary audience |
+|---|---|---|
+| `specula-framework` (this repo) | Canonical docs/specs/schemas/runtime profile | Governance architects, contributors, technical leads |
+| [`specula-method`](https://github.com/oddtitoreal/specula-method) | Strategic foresight branding method | Strategists, designers, innovation teams |
+| [`specula-skill`](https://github.com/oddtitoreal/specula-skill) | Constitution/state-machine implementation skill | AI engineers, governance implementers |
+
+Entry points:
+- If you need canonical governance specs and runtime contracts: start here.
+- If you need facilitation and method process: go to `specula-method`.
+- If you need technical constitution/state-machine implementation examples: go to `specula-skill`.
+
+## Who This Is For
+
+- Governance researchers and framework contributors
+- Technical architects integrating SPECULA runtime contracts
+- Teams needing canonical terminology/spec/version references
+
 ## Recommended reading order
 1. Foundations of the Specula Method
 2. SPECULA AI Constitution
@@ -25,9 +46,11 @@ This repository is a **private client delivery** of the SPECULA documentation se
 
 ## Governance
 See `specs/precedence.md` and `specs/terminology.md`.
+See `ALIGNMENT.md` for cross-repository ownership and sync rules.
 
 ## Versioning
 See `specs/versioning.md` and `CHANGELOG.md`.
+See `VERSIONS.md` for the multi-repository version map.
 
 ## Runtime MVP (Local)
 ```bash
