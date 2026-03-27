@@ -3,8 +3,8 @@
 from __future__ import annotations
 
 from dataclasses import dataclass, field
-from datetime import datetime, timezone
-from typing import Any, Dict, List
+from datetime import datetime, timedelta, timezone
+from typing import Any, Dict, List, Optional
 from uuid import uuid4
 
 from .constants import NEXT_PHASE, PHASE_DEFAULT_MODE, PHASE_SEQUENCE
@@ -26,12 +26,17 @@ PHASE_PREREQUISITES = {
 PHASE_ORDER = {phase: idx for idx, phase in enumerate(PHASE_SEQUENCE)}
 
 
+GUARDIAN_CRITICAL_LEVELS = {"critical"}
+GUARDIAN_RESPÉCULATE_ACTIONS = {"re_speculate"}
+
+
 def _default_continuity_context() -> Dict[str, List[str]]:
     return {
         "decision_log": [],
         "radical_values": [],
         "refusal_signals": [],
         "open_assumptions": [],
+        "refusal_learning": [],  # structured entries for learning loop: {refusal_id, violated_value, date, review_after}
     }
 
 
@@ -67,7 +72,12 @@ class ProjectState:
         raw_continuity = data.get("continuity_context", {})
         if isinstance(raw_continuity, dict):
             for key in continuity:
-                continuity[key] = _normalize_str_list(raw_continuity.get(key, []))
+                if key == "refusal_learning":
+                    # refusal_learning contains dicts, not plain strings
+                    raw_rl = raw_continuity.get(key, [])
+                    continuity[key] = [entry for entry in raw_rl if isinstance(entry, dict)] if isinstance(raw_rl, list) else []
+                else:
+                    continuity[key] = _normalize_str_list(raw_continuity.get(key, []))
 
         raw_validation_records = data.get("validation_records", {})
         validation_records: Dict[str, List[Dict[str, Any]]] = {}
@@ -429,6 +439,33 @@ class SpeculaOrchestrator:
             "artifact": artifact,
         }
 
+    def refusals_due_for_review(self, reference_date: Optional[datetime] = None) -> List[Dict[str, Any]]:
+        """Return refusal_learning entries whose review_after date has passed.
+
+        This implements the Refusal Register Learning Loop: refusals are not just
+        archived — they are queried periodically to ask whether context has changed
+        enough to warrant re-evaluation.
+
+        Args:
+            reference_date: The date to check against. Defaults to now (UTC).
+
+        Returns:
+            List of refusal_learning entries ready for re-evaluation review.
+        """
+        ref_dt = reference_date or datetime.now(timezone.utc)
+        due: List[Dict[str, Any]] = []
+        for entry in self.state.continuity_context.get("refusal_learning", []):
+            review_after_str = entry.get("review_after", "")
+            if not review_after_str:
+                continue
+            try:
+                review_after = datetime.fromisoformat(review_after_str.replace("Z", "+00:00"))
+                if ref_dt >= review_after:
+                    due.append(entry)
+            except ValueError:
+                continue
+        return due
+
     def _build_assistant_text(self, *, phase: str, mode: str, user_input: str) -> str:
         fallback = "\n".join(
             [
@@ -515,6 +552,27 @@ class SpeculaOrchestrator:
                 f"artifact `{artifact_id}` requires approvals from at least two distinct validator roles"
             )
 
+        # Phase 5 Community Co-Creation Protocol: structural check against theater consultation.
+        # dissent_log must be non-empty (active dissent collection is mandatory) and
+        # rejected_changes must be explicitly present (even if empty list) so the
+        # co-creation record is unambiguous about what was declined.
+        artifact = self.state.artifact_index.get(artifact_id, {})
+        phase = str(artifact.get("meta", {}).get("phase", ""))
+        if phase == "5":
+            co_creation = artifact.get("payload", {}).get("co_creation", {})
+            dissent_log = co_creation.get("dissent_log")
+            if not dissent_log:
+                raise ValueError(
+                    f"artifact `{artifact_id}` (Phase 5) cannot advance: `co_creation.dissent_log` "
+                    "is empty or missing. Active dissent collection is mandatory before community "
+                    "co-creation can be marked complete."
+                )
+            if "rejected_changes" not in co_creation:
+                raise ValueError(
+                    f"artifact `{artifact_id}` (Phase 5) cannot advance: `co_creation.rejected_changes` "
+                    "must be explicitly present. Document what the brand chose not to accept from community input."
+                )
+
     def _build_context_bundle(self) -> Dict[str, Any]:
         validated = sorted(
             self.state.phase_validated_artifacts.items(),
@@ -567,11 +625,27 @@ class SpeculaOrchestrator:
                 self._append_continuity("radical_values", value)
 
         if phase == "3" and mode == "refusal_register":
+            now_iso = _now_iso()
+            review_after_dt = datetime.now(timezone.utc) + timedelta(days=90)
+            review_after_iso = review_after_dt.replace(microsecond=0).isoformat().replace("+00:00", "Z")
             for refusal in payload.get("refusals", []):
                 signal = str(refusal.get("identity_signal", "")).strip()
                 violated = str(refusal.get("violated_value", "")).strip()
                 self._append_continuity("refusal_signals", signal)
                 self._append_continuity("open_assumptions", violated)
+                # Refusal Learning Loop: persist structured entry for quarterly re-evaluation.
+                # refusals_due_for_review() queries these to surface items ready for review.
+                refusal_id = str(refusal.get("refusal_id", "")).strip()
+                if refusal_id and violated:
+                    learning_bucket = self.state.continuity_context.setdefault("refusal_learning", [])
+                    if not any(e.get("refusal_id") == refusal_id for e in learning_bucket):
+                        learning_bucket.append({
+                            "refusal_id": refusal_id,
+                            "violated_value": violated,
+                            "identity_signal": signal,
+                            "date": now_iso,
+                            "review_after": review_after_iso,
+                        })
 
         if phase == "3" and mode in {"prototyping", "ethical_gate"}:
             for prototype in payload.get("prototypes", []):
@@ -585,9 +659,30 @@ class SpeculaOrchestrator:
                     )
 
         if phase == "6":
-            coherence = payload.get("guardian_report", {}).get("coherence", {})
+            guardian_report = payload.get("guardian_report", {})
+            coherence = guardian_report.get("coherence", {})
             for inconsistent in coherence.get("inconsistent", []):
                 self._append_continuity("open_assumptions", str(inconsistent).strip())
+
+            # Guardian Loop Agency: escalate critical drift signals to the continuity context
+            # so they cannot be silently ignored in the next re-speculation cycle.
+            # NEXT_PHASE["6"] = "1" — the system already returns to Phase 1, but only
+            # when divergence_level or recommended_action are critical does this become
+            # a mandatory re-speculation rather than an optional continuation.
+            divergence_level = str(guardian_report.get("divergence_level", "")).strip().lower()
+            recommended_action = str(guardian_report.get("recommended_action", "")).strip().lower()
+            is_critical = (
+                divergence_level in GUARDIAN_CRITICAL_LEVELS
+                or recommended_action in GUARDIAN_RESPÉCULATE_ACTIONS
+            )
+            if is_critical:
+                alert = (
+                    f"GUARDIAN ALERT [{_now_iso()}]: divergence_level='{divergence_level}', "
+                    f"recommended_action='{recommended_action}'. "
+                    "Mandatory re-speculation cycle required before any new phase can be marked valid."
+                )
+                self._append_continuity("open_assumptions", alert)
+                self._append_continuity("decision_log", alert)
 
     def _append_continuity(self, key: str, value: str, max_items: int = 25) -> None:
         if not value:

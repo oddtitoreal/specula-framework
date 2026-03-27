@@ -3,6 +3,19 @@
 All notable changes to this repository are documented here.
 
 ## Unreleased
+### 2026-03-27 - gap closure: learning loops, guardian agency, community protocol, governance charter
+
+#### specula-framework runtime (`src/specula_agent/orchestrator.py`)
+- Added `refusal_learning` key to `continuity_context` (alongside existing `refusal_signals`, `radical_values`, etc.). Each Phase 3 `refusal_register` artifact now writes a structured entry with `refusal_id`, `violated_value`, `identity_signal`, `date`, and `review_after` (+90 days). Implements the **Refusal Register Learning Loop**.
+- Added `SpeculaOrchestrator.refusals_due_for_review(reference_date)` public method. Returns refusal_learning entries whose `review_after` has passed — enabling periodic re-evaluation of past refusals rather than pure archival.
+- Added `GUARDIAN_CRITICAL_LEVELS` and `GUARDIAN_RESPÉCULATE_ACTIONS` module-level constants. In `_update_continuity_context` for Phase 6, when `divergence_level` is `critical` or `recommended_action` is `re_speculate`, the orchestrator now writes a mandatory `GUARDIAN ALERT` entry to both `decision_log` and `open_assumptions`. Implements **Guardian Loop Agency** — critical drift signals can no longer be silently ignored.
+- Added Phase 5 structural enforcement in `_assert_validation_requirements`. For Phase 5 artifacts, `co_creation.dissent_log` must be non-empty and `co_creation.rejected_changes` must be explicitly present. This enforces the **Community Co-Creation Protocol** at the code level and prevents theater consultation.
+- Import: added `timedelta` and `Optional` to the standard imports.
+
+#### specula-framework docs
+- Added `docs/15_circolo_di_sintesi_governance.md` — Circolo di Sintesi Governance Charter. Specifies composition (5 roles), voting rules (unanimous/4-5/3-5/veto sospensivo), term limits (24 months), audit mechanism, fallback procedures for quorum failure and organizational capture, and integration with Guardian alert levels.
+- Added `docs/16_refusal_register_learning_loop.md` — Refusal Register Learning Loop Protocol. Documents the technical integration with `orchestrator.py`, the re-evaluation process (3 questions), possible outcomes (confirm/partial_revision/inversion/archive), Decision Log format for re-evaluations, and recommended review frequency.
+
 ### 2026-02-19 - governance hardening and explainability contract
 - Enforced phase advancement only after at least two human approvals from distinct validator roles in runtime orchestration (`src/specula_agent/orchestrator.py`, `src/specula_agent/cli.py`).
 - Added validation record governance fields and duplicate-signature prevention in persistence (`validator_role`, `decision`, unique `(artifact_id, validator_id)`) with SQL export alignment (`src/specula_agent/storage.py`, `sql/specula_persistence.sql`).
