@@ -1,7 +1,10 @@
 # SPECULA Framework
 
-This repository is the **canonical SPECULA source** for docs, specs, schemas, and runtime profile.
-It originated from a client delivery and is now maintained as the ecosystem reference repository.
+*Your AI governance is distributed across prompts, documents, and informal decisions. This is the canonical source of truth.*
+
+This repository is the **canonical SPECULA source** for docs, specs, schemas, and runtime profile — the reference layer that keeps distributed implementations coherent.
+
+> **New here?** Start from the [Quick Start guide](./QUICKSTART.md) · [Avvio rapido (IT)](./QUICKSTART.it.md)
 
 ## SPECULA Ecosystem
 
@@ -18,11 +21,11 @@ Entry points:
 - If you need facilitation and method process: go to `specula-method`.
 - If you need technical constitution/state-machine implementation examples: go to `specula-skill`.
 
-## Who This Is For
+## Start here if...
 
-- Governance researchers and framework contributors
-- Technical architects integrating SPECULA runtime contracts
-- Teams needing canonical terminology/spec/version references
+- You need a **single source of truth** for how SPECULA governance works at runtime
+- You're **integrating SPECULA contracts** into a production system and need canonical schemas
+- You're **contributing** to the framework or resolving terminology/versioning questions
 
 ## Recommended reading order
 1. Foundations of the Specula Method
