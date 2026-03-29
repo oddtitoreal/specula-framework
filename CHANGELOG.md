@@ -1,36 +1,58 @@
 # Changelog
 
-All notable changes to this repository are documented here.
+All notable changes to the SPECULA Framework canonical source are documented here.
 
-## Unreleased
-### 2026-03-27 - gap closure: learning loops, guardian agency, community protocol, governance charter
+The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
+and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
-#### specula-framework runtime (`src/specula_agent/orchestrator.py`)
-- Added `refusal_learning` key to `continuity_context` (alongside existing `refusal_signals`, `radical_values`, etc.). Each Phase 3 `refusal_register` artifact now writes a structured entry with `refusal_id`, `violated_value`, `identity_signal`, `date`, and `review_after` (+90 days). Implements the **Refusal Register Learning Loop**.
-- Added `SpeculaOrchestrator.refusals_due_for_review(reference_date)` public method. Returns refusal_learning entries whose `review_after` has passed — enabling periodic re-evaluation of past refusals rather than pure archival.
-- Added `GUARDIAN_CRITICAL_LEVELS` and `GUARDIAN_RESPÉCULATE_ACTIONS` module-level constants. In `_update_continuity_context` for Phase 6, when `divergence_level` is `critical` or `recommended_action` is `re_speculate`, the orchestrator now writes a mandatory `GUARDIAN ALERT` entry to both `decision_log` and `open_assumptions`. Implements **Guardian Loop Agency** — critical drift signals can no longer be silently ignored.
-- Added Phase 5 structural enforcement in `_assert_validation_requirements`. For Phase 5 artifacts, `co_creation.dissent_log` must be non-empty and `co_creation.rejected_changes` must be explicitly present. This enforces the **Community Co-Creation Protocol** at the code level and prevents theater consultation.
-- Import: added `timedelta` and `Optional` to the standard imports.
+## [Unreleased]
 
-#### specula-framework docs
-- Added `docs/15_circolo_di_sintesi_governance.md` — Circolo di Sintesi Governance Charter. Specifies composition (5 roles), voting rules (unanimous/4-5/3-5/veto sospensivo), term limits (24 months), audit mechanism, fallback procedures for quorum failure and organizational capture, and integration with Guardian alert levels.
-- Added `docs/16_refusal_register_learning_loop.md` — Refusal Register Learning Loop Protocol. Documents the technical integration with `orchestrator.py`, the re-evaluation process (3 questions), possible outcomes (confirm/partial_revision/inversion/archive), Decision Log format for re-evaluations, and recommended review frequency.
+## [1.2.0] - 2026-03-27
 
-### 2026-02-19 - governance hardening and explainability contract
-- Enforced phase advancement only after at least two human approvals from distinct validator roles in runtime orchestration (`src/specula_agent/orchestrator.py`, `src/specula_agent/cli.py`).
-- Added validation record governance fields and duplicate-signature prevention in persistence (`validator_role`, `decision`, unique `(artifact_id, validator_id)`) with SQL export alignment (`src/specula_agent/storage.py`, `sql/specula_persistence.sql`).
-- Added continuity memory context and validated-phase prerequisites to prevent out-of-sequence phase generation and improve cross-turn coherence (`src/specula_agent/orchestrator.py`, `src/specula_agent/llm.py`).
-- Extended canonical artifact meta-schema with mandatory explainability fields (`decision_rationale`, `evidence_refs`, `tradeoffs`, `rejected_alternatives`) across all phase schemas in `schemas/`.
-- Strengthened Phase 3 contracts by requiring explicit rationale for each Ethical Gate question and reviewer decision references (`schemas/phase3_prototypes.schema.json`, `schemas/phase3_refusals.schema.json`).
-- Updated normative documentation to reflect the new runtime contract (`docs/06_json_schemas_outputs.md`, `docs/13_specula_method_agent.md`).
+### Added
 
-### 2026-02-18 - executable agent MVP enablement
-- Added an executable Python runtime in `src/specula_agent/` with:
-  - state-aware orchestrator and phase transition gate (`orchestrator.py`)
-  - policy checks for one-question rule, output header, anti-oracular language, and 6-line pre-question limit (`policy.py`)
+**Runtime Learning Loops & Guardian Agency**
+- Refusal Register Learning Loop: `refusal_learning` key to `continuity_context` with structured entries (`refusal_id`, `violated_value`, `identity_signal`, `date`, `review_after`). Enables re-evaluation of past refusals at +90 day intervals rather than pure archival.
+- `SpeculaOrchestrator.refusals_due_for_review(reference_date)` public method for periodic re-evaluation workflow.
+- Guardian Loop Agency: `GUARDIAN_CRITICAL_LEVELS` and `GUARDIAN_RESPÉCULATE_ACTIONS` module constants. Critical drift now generates mandatory `GUARDIAN ALERT` entries to both `decision_log` and `open_assumptions`.
+- Phase 5 structural enforcement: `co_creation.dissent_log` and `co_creation.rejected_changes` now mandatory, preventing theater consultation patterns.
+
+**Documentation & Governance**
+- `docs/15_circolo_di_sintesi_governance.md` — Circolo di Sintesi Governance Charter: 5-role composition, unanimous/4-5/3-5/veto voting rules, 24-month terms, quorum fallback procedures, organizational capture safeguards.
+- `docs/16_refusal_register_learning_loop.md` — Learning Loop Protocol: technical integration with orchestrator, 3-question re-evaluation process, decision log format, review frequency guidance.
+
+### Changed
+- Imports: added `timedelta` and `Optional` for learning loop time handling.
+- Phase 6 continuity context now includes Guardian alert write-through for `critical` divergence levels.
+
+## [1.1.1] - 2026-02-19
+
+### Added
+
+**Governance & Explainability**
+- Validation record governance fields: `validator_role`, `decision`, unique constraint on `(artifact_id, validator_id)` for duplicate-signature prevention.
+- Continuity memory context and validated-phase prerequisites in runtime orchestration.
+- Mandatory explainability metadata across all phase schemas: `decision_rationale`, `evidence_refs`, `tradeoffs`, `rejected_alternatives`.
+
+### Changed
+- Phase advancement now requires at least two human approvals from distinct validator roles (`src/specula_agent/orchestrator.py`, `src/specula_agent/cli.py`).
+- Phase 3 contract strengthened: explicit rationale required for each Ethical Gate question with reviewer decision references.
+- Persistence and SQL export aligned to governance schema changes (`src/specula_agent/storage.py`, `sql/specula_persistence.sql`).
+- Updated normative documentation to reflect governance runtime contract (`docs/06_json_schemas_outputs.md`, `docs/13_specula_method_agent.md`).
+
+## [1.1.0] - 2026-02-18
+
+### Added
+
+**Executable Runtime MVP**
+- Python runtime framework in `src/specula_agent/`:
+  - State-aware orchestrator and phase transition gate (`orchestrator.py`)
+  - Policy validator: one-question rule, output header, anti-oracular language, 6-line pre-question limit (`policy.py`)
   - JSON Schema-driven artifact validation (`schemas.py`)
-  - CLI commands for `step`, `validate`, and `advance` (`cli.py`)
-- Added machine-readable canonical contracts under `schemas/`:
+  - CLI commands: `step`, `validate`, `advance` (`cli.py`)
+
+**Machine-Readable Canonical Contracts**
+- Phase schemas in `schemas/`:
   - `phase0_activation.schema.json`
   - `phase1_scenarios.schema.json`
   - `phase1_5_competitive_map.schema.json`
@@ -40,42 +62,63 @@ All notable changes to this repository are documented here.
   - `phase4_narrative_system.schema.json`
   - `phase5_cocreation.schema.json`
   - `phase6_guardian.schema.json`
-- Added executable test suite in `tests/` for schema/meta validation, non-oracular checks, and state transition behavior.
-- Added provider adapters for real LLM generation (`openai`, `anthropic`) in `src/specula_agent/llm.py`, with strict fallback to deterministic output if policy constraints are violated.
-- Added optional PostgreSQL persistence and audit logging in `src/specula_agent/storage.py`, plus exportable SQL in `sql/specula_persistence.sql`.
-- Extended CLI with `init-db`, `--database-url`, and LLM flags (`--llm-provider`, `--llm-model`, `--llm-api-key-env`, `--llm-base-url`).
-- Added CI workflow in `.github/workflows/ci.yml` to run automated tests on push and pull requests.
-- Added packaging metadata (`pyproject.toml`) with optional `postgres` dependency and a runtime hygiene ignore file (`.gitignore`).
-- Added a reusable base prompt in `prompts/specula_method_agent_base.md`, derived from `specula-method/agent/specula-method-agent.md` and aligned to canonical `specula-framework` constraints.
-- Updated `README.md` with runtime assets map and local MVP quickstart (`venv`, install, CLI run, pytest).
-- Updated `docs/00_index.md` with links to runtime assets (`schemas/`, `prompts/`).
-- Aligned `docs/05_system_architecture_inputs.md` to canonical schema contract naming from `docs/06_json_schemas_outputs.md` (phase keys, refusal artifact naming, and phase references).
-- Updated `docs/13_specula_method_agent.md` to reflect canonical phase sequence (0, 1, 1.5, 2, 3, 4, 5, 6) and canonical artifact wrapper terminology.
 
-### 2026-02-18 - v2.4.5.2 alignment assessment and integration
-- Added `docs/14_specula_method_v2_4_5_2_aligned.md` as a non-normative aligned proposal for a possible next framework version.
-- Marked the proposal explicitly as `Version: 2.4.5.2`, dated `2026-02-18`, with status `Proposal (non-normative; compatibility layer with framework v2.3)`.
-- Updated `docs/00_index.md` and `README.md` to include the v2.4.5.2 proposal in the documentation navigation.
-- Added missing version/date headers to `specs/terminology.md` and `docs/13_specula_method_agent.md` for policy compliance.
-- Aligned the Agent Protocol output contract with MVP validation tests by changing the summary constraint from 10 lines to 6 lines before the next question.
-- Removed the stale changelog entry that referenced a `case-saponaria` placeholder directory that is not present in the repository.
-- Structural impact assessment: no change to canonical normative documents (`docs/01`-`docs/08`, `specs/precedence.md`, `specs/versioning.md`), no change to canonical schema contracts in `docs/06_json_schemas_outputs.md`, and no change to the current control logic/state machine.
-- Operational impact assessment: low immediate impact (documentation/navigation/governance hygiene), medium migration impact only if v2.4.5.2 is later promoted from proposal to canonical framework version.
-- Initial private delivery scaffold.
-- Added version/date headers to core documents.
-- Added version/date headers to governance specs.
-- Standardized mode identifiers and schema enums.
-- Aligned dataset annotation cognitive_mode values with canonical modes.
-- Aligned schema traceability fields and phase input enum.
-- Updated template meta wrapper mode enum to canonical list.
-- Added MVP implementation guide for AI engineers.
-- Added MVP sample conversations with expected JSON artifacts.
-- Added MVP validation test checklist for non-oracularity and format.
-- Added MVP persistence schema for Refusal Register and Guardian.
-- Updated documentation index to include implementation docs.
-- Added Specula Method Agent Protocol overview document.
-- Updated README and docs index to include the agent protocol.
+**Executable Validation & Testing**
+- Test suite in `tests/` for schema validation, meta validation, non-oracular checks, state transition behavior.
+- LLM provider adapters (`openai`, `anthropic`) in `src/specula_agent/llm.py` with deterministic fallback.
+- Optional PostgreSQL persistence and audit logging (`src/specula_agent/storage.py`).
+- SQL export schema in `sql/specula_persistence.sql`.
 
-## 2026-01-24
-- Repository structure created.
-- Imported English documentation set into `docs/`.
+**DevOps & Packaging**
+- CLI extensions: `init-db`, `--database-url`, `--llm-provider`, `--llm-model`, `--llm-api-key-env`, `--llm-base-url`.
+- GitHub Actions CI workflow (`.github/workflows/ci.yml`) for schema validation and link tests.
+- Packaging metadata in `pyproject.toml` with optional `postgres` dependency.
+
+**Documentation & Alignment**
+- Base prompt in `prompts/specula_method_agent_base.md` (derived from `specula-method` and aligned to `specula-framework` constraints).
+- `docs/14_specula_method_v2_4_5_2_aligned.md` — non-normative v2.4.5.2 proposal as compatibility layer.
+- Runtime alignment guide: `docs/05_system_architecture_inputs.md` and `docs/06_json_schemas_outputs.md` updated for canonical phase sequence and artifact wrapper terminology.
+- `docs/13_specula_method_agent.md` updated to canonical phase sequence (0, 1, 1.5, 2, 3, 4, 5, 6) and deployment notes.
+- Documentation index updated with runtime assets and agent protocol.
+
+### Changed
+- Agent Protocol output contract: summary constraint updated from 10 lines to 6 lines.
+- Core documents now include version/date headers (`specs/terminology.md`, `docs/13_specula_method_agent.md`).
+- Mode identifiers and schema enums standardized across runtime and templates.
+
+## [1.0.0] - 2026-01-24
+
+### Added
+- Repository structure and canonical documentation set in `docs/`.
+- Specs foundation: `specs/precedence.md`, `specs/terminology.md`, `specs/versioning.md`.
+- Documentation layers:
+  - Conceptual foundations (`docs/01`-`docs/08`)
+  - Technical translation (`docs/09`-`docs/13`)
+  - Governance charter placeholders for future expansion
+
+---
+
+## Version History Notes
+
+**Version 1.0.0** establishes the canonical SPECULA Framework as the single source of truth for runtime contracts, schemas, and governance specifications.
+
+**Version 1.1.0** introduced the executable Python MVP, making the framework operationalizable via CLI and API. Schemas became machine-readable contracts rather than documentation artifacts.
+
+**Version 1.1.1** hardened governance by enforcing dual-signature validation and explainability metadata across all artifacts — moving the framework from "documented design" to "auditable runtime."
+
+**Version 1.2.0** completed the learning loop architecture (Refusal Register re-evaluation, Guardian alerting) and added the Circolo di Sintesi governance model, making the framework self-governing and responsive to operational drift.
+
+**Major versions** (2.0.0+) will be released for:
+- Fundamental restructuring of the phase architecture
+- Breaking changes to schema contracts or specification precedence
+- New governance layers or framework-wide protocol changes
+
+**Minor versions** (1.x.0) for:
+- New runtime capabilities (executors, integrations, learning loops)
+- New documentation layers or case studies
+- Significant schema additions (new phase templates, new fields)
+
+**Patch versions** (1.x.y) for:
+- Schema compatibility fixes
+- Documentation clarifications
+- Non-breaking runtime improvements
