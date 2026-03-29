@@ -1,0 +1,29 @@
+{
+  "meta": {
+    "artifact_id": "basic-case-phase-0",
+    "phase": "0",
+    "mode": "sensemaking",
+    "generated_at": "2026-03-29T10:00:00Z",
+    "validated_by_human": true,
+    "related_artifacts": [],
+    "decision_rationale": "Activation of Specula Method for a community library seeking to formalize governance around collection curation and community voice in decision-making.",
+    "evidence_refs": [
+      "Library board meeting notes (2026-03-15)",
+      "Community survey on collection preferences (n=127)"
+    ],
+    "tradeoffs": [
+      "More formal governance may slow some decisions initially",
+      "Community involvement requires time investment from volunteers"
+    ],
+    "rejected_alternatives": [
+      "Maintaining informal consensus model (risk of vocal minorities overriding silent majority)",
+      "Delegation to single librarian (risk of personal bias in collection decisions)"
+    ]
+  },
+  "payload": {
+    "activation_status": "active",
+    "current_phase": 0,
+    "context_set": true,
+    "next_required_input": "Proceed to Phase 1: define future scenarios for the library's role in the community"
+  }
+}

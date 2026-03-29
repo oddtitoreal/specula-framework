@@ -1,0 +1,52 @@
+{
+  "meta": {
+    "artifact_id": "basic-case-phase-3-proto",
+    "phase": "3",
+    "mode": "validation",
+    "generated_at": "2026-03-29T15:30:00Z",
+    "validated_by_human": true,
+    "related_artifacts": ["basic-case-phase-2"],
+    "decision_rationale": "Three governance prototypes test different approaches to community voice while protecting core values (intellectual freedom, equity, accessibility).",
+    "evidence_refs": [
+      "Comparison of 5 public library governance models",
+      "Community input on preferred decision-making styles",
+      "Staff capacity assessment"
+    ],
+    "tradeoffs": [
+      "More inclusive governance takes longer initially",
+      "Testing multiple models extends timeline before final choice"
+    ],
+    "rejected_alternatives": [
+      "Single approach (no opportunity for community learning)",
+      "Governance without explicit ethical gates (risks value compromise)"
+    ]
+  },
+  "payload": {
+    "prototypes": [
+      {
+        "prototype_id": "lib-proto-delegated",
+        "name": "Delegated Curation Model",
+        "description": "Expert librarians make collection decisions; community provides input via surveys and reviews; governance council monitors for alignment with brand values.",
+        "how_tested": "3-month pilot with 50 community members on advisory board",
+        "expected_insight": "How much community involvement is optimal? Where does scale break?",
+        "governance_question": "Can we maintain community voice while keeping decisions efficient?"
+      },
+      {
+        "prototype_id": "lib-proto-participatory",
+        "name": "Participatory Curation Model",
+        "description": "Community members vote on contested titles; librarians curate foundational collection; mixed governance board has equal community/staff representation.",
+        "how_tested": "6-month pilot with voting mechanism for 20 contested titles",
+        "expected_insight": "What level of community participation can we sustain without overwhelm?",
+        "governance_question": "Does participatory curation strengthen community ownership or create conflict?"
+      },
+      {
+        "prototype_id": "lib-proto-algorithmic",
+        "name": "Algorithmic Curation Model",
+        "description": "Use open-source tools (not corporate algorithms) to recommend titles based on community reading patterns; community/librarian council maintains ethical override capability.",
+        "how_tested": "3-month pilot with recommendation tool in library app",
+        "expected_insight": "Can we get algorithmic benefits without losing community voice or intellectual freedom?",
+        "governance_question": "Does algorithmic assistance improve discovery or erode human judgment?"
+      }
+    ]
+  }
+}

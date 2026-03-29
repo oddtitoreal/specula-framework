@@ -1,0 +1,120 @@
+{
+  "meta": {
+    "artifact_id": "basic-case-phase-1",
+    "phase": "1",
+    "mode": "exploration",
+    "generated_at": "2026-03-29T11:15:00Z",
+    "validated_by_human": true,
+    "related_artifacts": ["basic-case-phase-0"],
+    "decision_rationale": "Four scenarios explore the library's evolution across 10 years under different cultural/economic/tech drivers. Essential for understanding which governance model protects against which futures.",
+    "evidence_refs": [
+      "Local demographic trends (city planning dept)",
+      "Digital library adoption rates in peer libraries",
+      "Community reading preferences survey"
+    ],
+    "tradeoffs": [
+      "Detailed scenarios require more facilitation time",
+      "Some scenarios may feel pessimistic but are necessary to test governance robustness"
+    ],
+    "rejected_alternatives": [
+      "Single 'optimistic' scenario (misses critical risks)",
+      "No scenario work (misses strategic alignment)"
+    ]
+  },
+  "payload": {
+    "scenarios": [
+      {
+        "scenario_id": "lib-pref",
+        "name": "Civic Hub (Preferred)",
+        "time_horizon": "10",
+        "drivers": [
+          {
+            "type": "cultural",
+            "description": "Community values local institutions; physical gathering spaces appreciated"
+          },
+          {
+            "type": "economic",
+            "description": "City budget remains stable; library funding maintained"
+          },
+          {
+            "type": "tech",
+            "description": "Digital tools enhance (not replace) physical services; hybrid model thrives"
+          }
+        ],
+        "scenario_type": "preferred",
+        "description": "Library becomes true civic hub: expanded programs, robust collection, active community governance, financial stability.",
+        "maieutic_question": "What governance structure would best enable and protect this scenario?",
+        "user_response": "A transparent, community-inclusive governance model that formalizes input from patrons and staff"
+      },
+      {
+        "scenario_id": "lib-fear",
+        "name": "Irrelevance (Feared)",
+        "time_horizon": "10",
+        "drivers": [
+          {
+            "type": "tech",
+            "description": "Digital-only services capture most users; physical visits decline steeply"
+          },
+          {
+            "type": "economic",
+            "description": "City budget cuts; library funding reduced by 40%"
+          },
+          {
+            "type": "cultural",
+            "description": "Cultural shift toward private (corporate) gathering spaces"
+          }
+        ],
+        "scenario_type": "feared",
+        "description": "Library becomes marginal: reduced hours, minimal collection, volunteer-dependent, declining relevance.",
+        "maieutic_question": "What governance guardrails would allow the library to survive and eventually thrive even in this scenario?",
+        "user_response": "Explicit commitment to core values (accessibility, equity, community voice) that survive budget cuts"
+      },
+      {
+        "scenario_id": "lib-wild",
+        "name": "Hyperlocal Powerhouse (Wild Card)",
+        "time_horizon": "10",
+        "drivers": [
+          {
+            "type": "cultural",
+            "description": "Sudden backlash against corporate platforms; local institutions seen as essential"
+          },
+          {
+            "type": "tech",
+            "description": "Open-source tools allow libraries to offer services previously locked in corporate platforms"
+          },
+          {
+            "type": "economic",
+            "description": "Regional library cooperation creates economies of scale without central control"
+          }
+        ],
+        "scenario_type": "wild_card",
+        "description": "Library becomes a node in a federated, community-controlled information network. Unexpected opportunity.",
+        "maieutic_question": "What governance principles would allow us to seize this opportunity while staying accountable to our community?",
+        "user_response": "Governance must be interoperable with other libraries while maintaining local autonomy"
+      },
+      {
+        "scenario_id": "lib-neg",
+        "name": "Politicized & Captured (Negative)",
+        "time_horizon": "10",
+        "drivers": [
+          {
+            "type": "regulatory",
+            "description": "New laws give city council direct veto over collection decisions"
+          },
+          {
+            "type": "cultural",
+            "description": "Library becomes battleground for culture war issues"
+          },
+          {
+            "type": "economic",
+            "description": "Funding becomes conditional on compliance with majority political preferences"
+          }
+        ],
+        "scenario_type": "negative",
+        "description": "Library loses independence; becomes tool of political faction; community loses trust.",
+        "maieutic_question": "What governance structures would protect democratic values and intellectual freedom even under political pressure?",
+        "user_response": "Clear separation between governance (community) and collection decisions; explicit intellectual freedom commitments"
+      }
+    ]
+  }
+}

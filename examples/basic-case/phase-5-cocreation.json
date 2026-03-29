@@ -1,0 +1,99 @@
+{
+  "meta": {
+    "artifact_id": "basic-case-phase-5",
+    "phase": "5",
+    "mode": "emergence",
+    "generated_at": "2026-03-29T18:30:00Z",
+    "validated_by_human": true,
+    "related_artifacts": ["basic-case-phase-4"],
+    "decision_rationale": "Community co-creation operationalizes governance promises. Specific mechanisms, roles, and decision-making processes that transform Phase 4 narrative into lived practice.",
+    "evidence_refs": [
+      "Phase 4 narrative commitments",
+      "Governance model examples from other libraries",
+      "Community input on preferred participation methods"
+    ],
+    "tradeoffs": [
+      "Formal co-creation mechanisms take time and resources",
+      "Without them, narrative commitments remain aspirational"
+    ],
+    "rejected_alternatives": [
+      "Narrative without mechanisms (theater, not real governance)",
+      "Mechanisms without narrative (people don't understand why)"
+    ]
+  },
+  "payload": {
+    "governance_structure": {
+      "council_name": "Community Governance Council",
+      "composition": [
+        {
+          "role": "Community Members",
+          "count": 7,
+          "selection": "Elected annually by community vote (24-month term possible)",
+          "responsibility": "Represent patron interests; vote on major collection and budget decisions"
+        },
+        {
+          "role": "Library Staff Representatives",
+          "count": 2,
+          "selection": "Elected by staff",
+          "responsibility": "Represent staff expertise and operational constraints"
+        },
+        {
+          "role": "Library Director",
+          "count": 1,
+          "selection": "Hired by Council; reports to Council",
+          "responsibility": "Execute Council decisions; manage day-to-day operations"
+        }
+      ],
+      "decision_types": [
+        {
+          "decision": "Annual budget allocation",
+          "authority": "Council votes; majority required",
+          "timeline": "3 months before fiscal year"
+        },
+        {
+          "decision": "Contested collection items",
+          "authority": "Community vote (advisory); Council decides with community input",
+          "timeline": "30-day comment period"
+        },
+        {
+          "decision": "Major policy changes (hours, fees, partnerships)",
+          "authority": "Council votes; 2/3 majority required",
+          "timeline": "30-day notice and community comment"
+        },
+        {
+          "decision": "Hiring/firing Director",
+          "authority": "Council votes; unanimous on firing",
+          "timeline": "Annual performance review; 60 days for change process"
+        }
+      ]
+    },
+    "participation_mechanisms": [
+      {
+        "mechanism": "Open Council Meetings",
+        "frequency": "Monthly, open to public",
+        "purpose": "Transparency; community observation and input"
+      },
+      {
+        "mechanism": "Community Comment Period",
+        "frequency": "Before major decisions",
+        "purpose": "Structured input on policies, collection, budget"
+      },
+      {
+        "mechanism": "Annual Community Assembly",
+        "frequency": "Once per year",
+        "purpose": "Strategic direction-setting; open discussion of vision"
+      },
+      {
+        "mechanism": "Specialty Advisory Committees",
+        "frequency": "Monthly or as needed",
+        "purpose": "Deep input on collections (youth, seniors, multilingual, etc.)"
+      }
+    ],
+    "accountability_mechanisms": [
+      "Annual public report on governance decisions",
+      "Community feedback survey",
+      "Council performance review by community",
+      "Conflict resolution process (mediation before escalation)"
+    ]
+  }
+}

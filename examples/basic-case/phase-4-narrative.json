@@ -1,0 +1,54 @@
+{
+  "meta": {
+    "artifact_id": "basic-case-phase-4",
+    "phase": "4",
+    "mode": "synthesis",
+    "generated_at": "2026-03-29T17:00:00Z",
+    "validated_by_human": true,
+    "related_artifacts": ["basic-case-phase-2", "basic-case-phase-3-refusal"],
+    "decision_rationale": "Narrative system translates brand DNA and refusals into language that resonates with different community audiences (patrons, city council, donors, staff).",
+    "evidence_refs": [
+      "Community survey on values (Phase 2)",
+      "Refusal decisions (Phase 3)",
+      "Messaging analysis of peer libraries"
+    ],
+    "tradeoffs": [
+      "Multiple narratives require consistent underlying values",
+      "Different audiences need different language, same substance"
+    ],
+    "rejected_alternatives": [
+      "Single narrative (doesn't speak to diverse stakeholders)",
+      "Inconsistent narratives across audiences (erodes trust)"
+    ]
+  },
+  "payload": {
+    "core_narrative": "We are a community library reimagined as a democratic institution. We protect intellectual freedom, guarantee equitable access, and govern ourselves through community voice—not corporate algorithms or political control.",
+    "audience_narratives": [
+      {
+        "audience": "Patrons & Community Members",
+        "narrative": "This is YOUR library. We exist to serve your curiosity, your research, your joy in reading—not to profit from you or control what you think. Your voice shapes our decisions.",
+        "proof_points": ["Community governance board", "Free for all", "No surveillance", "Transparent collection decisions"]
+      },
+      {
+        "audience": "City Council & Budget Decision Makers",
+        "narrative": "We are a cost-effective civic institution that builds social cohesion, supports literacy, and strengthens democratic participation. We're fiscally responsible stewards of public investment.",
+        "proof_points": ["Transparent budget", "Clear metrics for impact", "Engaged governance", "Strong community support"]
+      },
+      {
+        "audience": "Donors & Philanthropists",
+        "narrative": "Invest in a library that proves democracy can work at the local level. We're building a model of community governance that protects intellectual freedom while building trust.",
+        "proof_points": ["Innovative governance", "Strong values alignment", "Community impact", "Transparent spending"]
+      },
+      {
+        "audience": "Library Staff & Volunteers",
+        "narrative": "You are not order-takers. You are partners in a governance experiment that respects professional expertise, community input, and your own intellectual growth.",
+        "proof_points": ["Staff on governance board", "Professional development funding", "Clear values", "Democratic decision-making"]
+      }
+    ],
+    "key_messages": [
+      "Intellectual freedom isn't luxury—it's essential infrastructure for democracy",
+      "Community-governed institutions can be more responsive than corporate or purely top-down models",
+      "Equity and efficiency aren't opposed; shared decision-making builds sustainable community support"
+    ]
+  }
+}

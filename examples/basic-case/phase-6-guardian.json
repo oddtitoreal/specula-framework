@@ -1,0 +1,76 @@
+{
+  "meta": {
+    "artifact_id": "basic-case-phase-6",
+    "phase": "6",
+    "mode": "governance",
+    "generated_at": "2026-03-29T19:45:00Z",
+    "validated_by_human": true,
+    "related_artifacts": ["basic-case-phase-5"],
+    "decision_rationale": "Guardian mechanisms detect and respond to drift from core values. Enables self-correction without external intervention, protecting long-term institutional identity.",
+    "evidence_refs": [
+      "Refusals (Phase 3): what we protect against",
+      "Governance structure (Phase 5): how we decide",
+      "Case studies of institutions losing values over time"
+    ],
+    "tradeoffs": [
+      "Guardian processes can feel bureaucratic",
+      "But without them, values drift is nearly inevitable in institutional aging"
+    ],
+    "rejected_alternatives": [
+      "No Guardian (values erode slowly)",
+      "External Guardian (loses local accountability)"
+    ]
+  },
+  "payload": {
+    "guardian_mandate": "Detect, document, and escalate any drift from core values (Intellectual Freedom, Equity, Community Voice, Serendipity) and trigger correction processes.",
+    "monitoring_mechanisms": [
+      {
+        "mechanism": "Annual Values Audit",
+        "frequency": "Once per year",
+        "question": "Are we living our four core values? Where are we drifting?",
+        "owner": "Governance Council + community committee",
+        "output": "Values report with findings and recommendations"
+      },
+      {
+        "mechanism": "Refusal Registry",
+        "frequency": "Continuous monitoring",
+        "question": "Have any of our core refusals been violated or pressured?",
+        "owner": "Director + Council",
+        "output": "Incident log; escalation to Council if violations occur"
+      },
+      {
+        "mechanism": "Community Feedback Loop",
+        "frequency": "Quarterly surveys + annual comment period",
+        "question": "Do community members feel heard? Do they trust our values?",
+        "owner": "Governance Council",
+        "output": "Feedback report; comparison to previous years"
+      }
+    ],
+    "escalation_protocol": [
+      {
+        "level": 1,
+        "trigger": "Minor drift detected (e.g., single complaint about censorship attempt)",
+        "response": "Document incident; discuss in Council; communicate decision publicly",
+        "timeline": "30 days"
+      },
+      {
+        "level": 2,
+        "trigger": "Pattern of drift (e.g., multiple complaints; staff concerns about erosion)",
+        "response": "Convene special governance committee; audit decisions; report to community",
+        "timeline": "60 days"
+      },
+      {
+        "level": 3,
+        "trigger": "Fundamental violation (e.g., major censorship; removal of Director without due process)",
+        "response": "Community assembly; consider reconstitution of Council; possible external arbitration",
+        "timeline": "90 days"
+      }
+    ],
+    "long_term_value_preservation": {
+      "mechanism": "Constitution Document",
+      "description": "Written library constitution (reviewed every 5 years) that codifies values, governance structure, and refusals",
+      "purpose": "Survives individual Council members; provides continuity across generations",
+      "protected_by": "Community vote required to amend (2/3 majority); constitutional convention every 10 years"
+    }
+  }
+}

@@ -1,0 +1,59 @@
+{
+  "meta": {
+    "artifact_id": "basic-case-phase-2",
+    "phase": "2",
+    "mode": "synthesis",
+    "generated_at": "2026-03-29T14:00:00Z",
+    "validated_by_human": true,
+    "related_artifacts": ["basic-case-phase-1", "basic-case-phase-1.5"],
+    "decision_rationale": "Brand DNA synthesizes library's essential identity from scenarios and competitive position. Guides all downstream governance and collection decisions.",
+    "evidence_refs": [
+      "Phase 1 scenarios (esp. Civic Hub preferred, Politicized feared)",
+      "Phase 1.5 competitive map (library's unique strengths)",
+      "Community survey data on values (equity, accessibility, intellectual freedom)"
+    ],
+    "tradeoffs": [
+      "Explicit value statements may alienate some stakeholders",
+      "Committing to values in writing creates accountability"
+    ],
+    "rejected_alternatives": [
+      "Generic library mission (fails to differentiate)",
+      "Single curator's vision (not community-rooted)"
+    ]
+  },
+  "payload": {
+    "brand_name": "Community Library Collective",
+    "tagline": "Knowledge, trust, and community voice at the center",
+    "core_values": [
+      {
+        "value": "Intellectual Freedom",
+        "definition": "We protect the right to seek, share, and challenge ideas—without censorship or algorithmic control.",
+        "governance_implication": "Collection decisions made by community, not corporate algorithms or political pressure"
+      },
+      {
+        "value": "Equity & Access",
+        "definition": "We ensure everyone—regardless of income, education, or ability—can access knowledge and community.",
+        "governance_implication": "Free access, materials in multiple formats, staff trained in accessibility"
+      },
+      {
+        "value": "Community Voice",
+        "definition": "We are governed by and accountable to the community we serve, not distant corporate or political entities.",
+        "governance_implication": "Formal governance structure with community representation; transparent decision-making"
+      },
+      {
+        "value": "Serendipity & Discovery",
+        "definition": "We believe unexpected encounters with books, people, and ideas enrich life in ways algorithms can't replicate.",
+        "governance_implication": "Diverse collection curated by humans, community curation alongside expert curation"
+      }
+    ],
+    "brand_archetype": "The Mentor / Sage (trusted guide to knowledge) + The Everyman (for everyone, no gatekeepers)",
+    "tone_voice": {
+      "tone": "Warm, accessible, intellectually serious but not elitist",
+      "voice_elements": [
+        "We speak directly, not in jargon",
+        "We admit what we don't know",
+        "We center community perspective, not expert authority"
+      ]
+    }
+  }
+}

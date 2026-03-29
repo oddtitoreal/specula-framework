@@ -1,0 +1,52 @@
+{
+  "meta": {
+    "artifact_id": "basic-case-phase-1.5",
+    "phase": "1.5",
+    "mode": "exploration",
+    "generated_at": "2026-03-29T12:30:00Z",
+    "validated_by_human": true,
+    "related_artifacts": ["basic-case-phase-1"],
+    "decision_rationale": "Competitive map identifies how the library differentiates from digital platforms and corporate community spaces. Critical for positioning collection and governance model.",
+    "evidence_refs": [
+      "Amazon/Google services analysis",
+      "Competing bookstores and cafes in area",
+      "Other library governance models (3 case studies)"
+    ],
+    "tradeoffs": [
+      "May reveal uncomfortable truths about competitive disadvantage",
+      "Requires honest assessment of library's actual vs. perceived value"
+    ],
+    "rejected_alternatives": [
+      "Ignoring competitive landscape (risk of obsolescence)",
+      "Competing on features where we'll always lose (speed, convenience)"
+    ]
+  },
+  "payload": {
+    "competitors": [
+      {
+        "competitor_id": "amazon-market",
+        "name": "Amazon & Digital Commerce",
+        "positioning": "On-demand, infinite selection, convenience, personalized algorithms",
+        "strengths": ["Instant delivery", "Perfect personalization", "24/7 access"],
+        "weaknesses": ["No community", "Algorithm-driven curation", "Corporate ownership"],
+        "library_differentiation": "Human curation, community values, local trust, serendipity"
+      },
+      {
+        "competitor_id": "coffee-shop",
+        "name": "Coffee Shop & Bookstore",
+        "positioning": "Aesthetics, social gathering, experience",
+        "strengths": ["Pleasant ambiance", "Curated selection", "Integrated commerce"],
+        "weaknesses": ["Expensive", "Selection limited", "Profit-driven"],
+        "library_differentiation": "Free access, comprehensive collection, community-driven collection, equity focus"
+      },
+      {
+        "competitor_id": "civic-space",
+        "name": "Parks, Community Centers, Civic Spaces",
+        "positioning": "Community gathering, free/low-cost, accessible",
+        "strengths": ["Low cost", "Accessible", "Community focus"],
+        "weaknesses": ["No information/learning resources", "Fragmented purpose"],
+        "library_differentiation": "Knowledge + community integration, intellectual freedom, diverse perspectives"
+      }
+    ]
+  }
+}

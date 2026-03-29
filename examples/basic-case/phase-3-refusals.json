@@ -1,0 +1,56 @@
+{
+  "meta": {
+    "artifact_id": "basic-case-phase-3-refusal",
+    "phase": "3",
+    "mode": "validation",
+    "generated_at": "2026-03-29T15:45:00Z",
+    "validated_by_human": true,
+    "related_artifacts": ["basic-case-phase-2", "basic-case-phase-3-proto"],
+    "decision_rationale": "Explicit refusals clarify what the library will NOT do, even under pressure. These refusals protect core identity and prevent drift.",
+    "evidence_refs": [
+      "Community value commitments (Phase 2)",
+      "Feared scenarios (Phase 1: Politicized & Captured)",
+      "Case studies of libraries that compromised values"
+    ],
+    "tradeoffs": [
+      "Explicit refusals create rigid commitments",
+      "But lack of refusals risks slow value erosion"
+    ],
+    "rejected_alternatives": [
+      "No formal refusals (risk of incremental compromise)",
+      "Conditional refusals (defeat the purpose)"
+    ]
+  },
+  "payload": {
+    "refusals": [
+      {
+        "refusal_id": "lib-refuse-censorship",
+        "violated_value": "Intellectual Freedom",
+        "refusal": "We refuse to remove books based on political, religious, or cultural pressure—from any source.",
+        "boundary": "We DO respond to legitimate content errors (factual corrections, accessibility); we DO NOT remove books for ideology.",
+        "escalation": "If pressured to censor: (1) document request, (2) convene ethics committee, (3) explain decision publicly, (4) appeal to library association for support"
+      },
+      {
+        "refusal_id": "lib-refuse-algorithmic-control",
+        "violated_value": "Intellectual Freedom + Community Voice",
+        "refusal": "We refuse to use corporate algorithms (Google, Amazon, Apple) to curate or recommend library collection.",
+        "boundary": "We DO use open-source, community-controlled tools; we DO preserve human librarian judgment; we DO maintain community override.",
+        "escalation": "If tempted by corporate partnerships: (1) audit for value alignment, (2) require community vote, (3) keep human librarians in decision loop"
+      },
+      {
+        "refusal_id": "lib-refuse-user-surveillance",
+        "violated_value": "Equity + Community Trust",
+        "refusal": "We refuse to track, profile, or monetize patron reading habits.",
+        "boundary": "We DO collect aggregate usage stats for planning; we DO NOT create individual patron profiles or sell data.",
+        "escalation": "If facing budget pressure to monetize data: (1) explore alternative funding, (2) convene board, (3) prefer to reduce hours rather than compromise trust"
+      },
+      {
+        "refusal_id": "lib-refuse-unequal-access",
+        "violated_value": "Equity & Access",
+        "refusal": "We refuse to create tiered access (premium collections for paid members, restricted collections for low-income patrons).",
+        "boundary": "We DO have specialized collections for experts; they are free to ALL patrons. We DO NOT segregate by ability to pay.",
+        "escalation": "If facing budget cuts that might force tiering: (1) convene board and community, (2) reduce scope before reducing equity, (3) seek alternative funding"
+      }
+    ]
+  }
+}
