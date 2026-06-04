@@ -7,6 +7,12 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [1.2.1] - 2026-06-04
+
+### Removed
+- `docs/08_specula_method_v2_3.md` — Method documentation retired. Canonical method is now maintained exclusively in `specula-method` repo.
+- `docs/14_specula_method_v2_4_5_2_aligned.md` — v2.4.5.2 aligned proposal integrated into `specula-method` v1.1 and retired here.
+
 ## [1.2.0] - 2026-03-27
 
 ### Added
