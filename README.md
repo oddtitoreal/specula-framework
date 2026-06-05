@@ -24,8 +24,9 @@ This repository is one of three related SPECULA repositories:
 
 | Repository | Primary Role | Entry Point |
 |---|---|---|
+| [`specula-bos`](https://github.com/oddtitoreal/specula-bos) | **Product layer** — Brand Operating System architecture, workshop protocols, governance playbook | If you're building or deploying a BOS for a client organization |
 | `specula-framework` (this repo) | **Runtime specification layer** — canonical schemas, contracts, executable validation | If you're integrating SPECULA into a system, building a runtime, or need authoritative specs |
-| [`specula-method`](https://github.com/oddtitoreal/specula-method) | **Methodology layer** — the six-phase facilitation process, ethical framework, decision logic | If you need to understand the method itself or run a facilitated session |
+| [`specula-method`](https://github.com/oddtitoreal/specula-method) | **Methodology layer** — the seven-phase facilitation process, ethical framework, decision logic | If you need to understand the method itself or run a facilitated session |
 | [`specula-skill`](https://github.com/oddtitoreal/specula-skill) | **Implementation layer** — constitution validation, state-machine templates, constitution-to-runtime mapping | If you're implementing SPECULA governance rules in code |
 
 ## Start Here If You Need To...
@@ -42,7 +43,7 @@ This repository is one of three related SPECULA repositories:
 1. **What is SPECULA?** → `specula-method` overview
 2. **What phases are there?** → `docs/00_index.md`, then read `docs/01`-`docs/08` (conceptual foundations)
 3. **What do artifacts look like?** → `docs/06_json_schemas_outputs.md` and the schemas in `schemas/`
-4. **How does the runtime work?** → `docs/13_specula_method_agent.md` and `docs/14_specula_method_v2_4_5_2_aligned.md`
+4. **How does the runtime work?** → `docs/13_specula_method_agent.md`
 5. **What are the governance rules?** → `docs/09`-`docs/12` (technical translation & control logic)
 6. **How do we maintain alignment?** → `specs/`, `ALIGNMENT.md`, `VERSIONS.md`
 
