@@ -1,51 +1,91 @@
 {
   "meta": {
-    "artifact_id": "basic-case-phase-3-proto",
+    "artifact_id": "basic-case-phase-3-prototypes",
     "phase": "3",
-    "mode": "validation",
+    "mode": "prototyping",
     "generated_at": "2026-03-29T15:30:00Z",
-    "validated_by_human": true,
-    "related_artifacts": ["basic-case-phase-2"],
-    "decision_rationale": "Three governance prototypes test different approaches to community voice while protecting core values (intellectual freedom, equity, accessibility).",
+    "validated_by_human": false,
+    "related_artifacts": [
+      "basic-case-phase-1",
+      "basic-case-phase-2"
+    ],
+    "decision_rationale": "Prototypes translate the preferred and wild-card scenarios into concrete services, each passed through the ethical gate before adoption.",
     "evidence_refs": [
-      "Comparison of 5 public library governance models",
-      "Community input on preferred decision-making styles",
-      "Staff capacity assessment"
+      "Phase 1 scenarios",
+      "Phase 2 brand DNA",
+      "Volunteer capacity assessment (2026-03)"
     ],
     "tradeoffs": [
-      "More inclusive governance takes longer initially",
-      "Testing multiple models extends timeline before final choice"
+      "Ambitious prototypes strain volunteer capacity",
+      "Federation increases interoperability but reduces unilateral control"
     ],
     "rejected_alternatives": [
-      "Single approach (no opportunity for community learning)",
-      "Governance without explicit ethical gates (risks value compromise)"
+      "Corporate discovery platform (violates refusal zones)",
+      "Donor-directed collection (violates community voice)"
     ]
   },
   "payload": {
     "prototypes": [
       {
-        "prototype_id": "lib-proto-delegated",
-        "name": "Delegated Curation Model",
-        "description": "Expert librarians make collection decisions; community provides input via surveys and reviews; governance council monitors for alignment with brand values.",
-        "how_tested": "3-month pilot with 50 community members on advisory board",
-        "expected_insight": "How much community involvement is optimal? Where does scale break?",
-        "governance_question": "Can we maintain community voice while keeping decisions efficient?"
+        "prototype_id": "proto-civic-hub",
+        "scenario_id": "lib-pref",
+        "description": "A community-governed programming calendar where patrons propose and vote on events and acquisitions.",
+        "role_in_future": "Anchors the library as an active civic hub with formalized community input.",
+        "stakeholder_impact": {
+          "winners": [
+            "Patrons",
+            "Local authors",
+            "Volunteers"
+          ],
+          "losers": [
+            "Staff who preferred informal, faster decisions"
+          ]
+        },
+        "ethical_gate": {
+          "status": "PASS",
+          "violated_values": [],
+          "systemic_impact": "aligned",
+          "question_1_value_violation_rationale": "No radical value is violated; community voice and equity are strengthened.",
+          "question_2_harmful_practice_rationale": "No harmful practice: voting is transparent and open to all patrons.",
+          "question_3_unacceptable_dependency_rationale": "No unacceptable dependency; the tool is open-source and self-hosted.",
+          "reviewer_decision_refs": [
+            {
+              "validator_role": "Library board chair",
+              "decision": "approve",
+              "reference": "board-min-2026-03-29#civic-hub"
+            }
+          ]
+        }
       },
       {
-        "prototype_id": "lib-proto-participatory",
-        "name": "Participatory Curation Model",
-        "description": "Community members vote on contested titles; librarians curate foundational collection; mixed governance board has equal community/staff representation.",
-        "how_tested": "6-month pilot with voting mechanism for 20 contested titles",
-        "expected_insight": "What level of community participation can we sustain without overwhelm?",
-        "governance_question": "Does participatory curation strengthen community ownership or create conflict?"
-      },
-      {
-        "prototype_id": "lib-proto-algorithmic",
-        "name": "Algorithmic Curation Model",
-        "description": "Use open-source tools (not corporate algorithms) to recommend titles based on community reading patterns; community/librarian council maintains ethical override capability.",
-        "how_tested": "3-month pilot with recommendation tool in library app",
-        "expected_insight": "Can we get algorithmic benefits without losing community voice or intellectual freedom?",
-        "governance_question": "Does algorithmic assistance improve discovery or erode human judgment?"
+        "prototype_id": "proto-federated-network",
+        "scenario_id": "lib-wild",
+        "description": "A federated catalog letting peer libraries share holdings and governance patterns while retaining local autonomy.",
+        "role_in_future": "Positions the library as a node in a community-controlled information network.",
+        "stakeholder_impact": {
+          "winners": [
+            "Patrons",
+            "Peer libraries"
+          ],
+          "losers": [
+            "Vendors of proprietary catalog software"
+          ]
+        },
+        "ethical_gate": {
+          "status": "HOLD",
+          "violated_values": [],
+          "systemic_impact": "aligned",
+          "question_1_value_violation_rationale": "No value violated, but data-sharing terms across libraries need review.",
+          "question_2_harmful_practice_rationale": "No harmful practice, provided patron data is not shared across nodes.",
+          "question_3_unacceptable_dependency_rationale": "Held pending confirmation that no single node can control others' collections.",
+          "reviewer_decision_refs": [
+            {
+              "validator_role": "Data governance reviewer",
+              "decision": "hold",
+              "reference": "review-2026-03-29#federation-data"
+            }
+          ]
+        }
       }
     ]
   }
