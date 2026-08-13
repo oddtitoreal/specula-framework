@@ -4,9 +4,11 @@
     "phase": "1",
     "mode": "exploration",
     "generated_at": "2026-03-29T11:15:00Z",
-    "validated_by_human": true,
-    "related_artifacts": ["basic-case-phase-0"],
-    "decision_rationale": "Four scenarios explore the library's evolution across 10 years under different cultural/economic/tech drivers. Essential for understanding which governance model protects against which futures.",
+    "validated_by_human": false,
+    "related_artifacts": [
+      "basic-case-phase-0"
+    ],
+    "decision_rationale": "Four scenarios explore the library's evolution across 10 years under different cultural/economic/tech drivers, to understand which governance model protects against which futures.",
     "evidence_refs": [
       "Local demographic trends (city planning dept)",
       "Digital library adoption rates in peer libraries",
@@ -42,7 +44,7 @@
           }
         ],
         "scenario_type": "preferred",
-        "description": "Library becomes true civic hub: expanded programs, robust collection, active community governance, financial stability.",
+        "description": "Library becomes a true civic hub: expanded programs, robust collection, active community governance, financial stability.",
         "maieutic_question": "What governance structure would best enable and protect this scenario?",
         "user_response": "A transparent, community-inclusive governance model that formalizes input from patrons and staff"
       },
@@ -57,16 +59,16 @@
           },
           {
             "type": "economic",
-            "description": "City budget cuts; library funding reduced by 40%"
+            "description": "City budget cuts reduce library funding by 40%"
           },
           {
             "type": "cultural",
-            "description": "Cultural shift toward private (corporate) gathering spaces"
+            "description": "Cultural shift toward private, corporate gathering spaces"
           }
         ],
         "scenario_type": "feared",
         "description": "Library becomes marginal: reduced hours, minimal collection, volunteer-dependent, declining relevance.",
-        "maieutic_question": "What governance guardrails would allow the library to survive and eventually thrive even in this scenario?",
+        "maieutic_question": "What governance guardrails would let the library survive and eventually thrive even here?",
         "user_response": "Explicit commitment to core values (accessibility, equity, community voice) that survive budget cuts"
       },
       {
@@ -80,7 +82,7 @@
           },
           {
             "type": "tech",
-            "description": "Open-source tools allow libraries to offer services previously locked in corporate platforms"
+            "description": "Open-source tools let libraries offer services previously locked in corporate platforms"
           },
           {
             "type": "economic",
@@ -88,8 +90,8 @@
           }
         ],
         "scenario_type": "wild_card",
-        "description": "Library becomes a node in a federated, community-controlled information network. Unexpected opportunity.",
-        "maieutic_question": "What governance principles would allow us to seize this opportunity while staying accountable to our community?",
+        "description": "Library becomes a node in a federated, community-controlled information network.",
+        "maieutic_question": "What governance principles would let us seize this opportunity while staying accountable?",
         "user_response": "Governance must be interoperable with other libraries while maintaining local autonomy"
       },
       {
@@ -103,7 +105,7 @@
           },
           {
             "type": "cultural",
-            "description": "Library becomes battleground for culture war issues"
+            "description": "Library becomes a battleground for culture-war issues"
           },
           {
             "type": "economic",
@@ -111,9 +113,9 @@
           }
         ],
         "scenario_type": "negative",
-        "description": "Library loses independence; becomes tool of political faction; community loses trust.",
-        "maieutic_question": "What governance structures would protect democratic values and intellectual freedom even under political pressure?",
-        "user_response": "Clear separation between governance (community) and collection decisions; explicit intellectual freedom commitments"
+        "description": "Library loses independence; becomes a tool of a political faction; community loses trust.",
+        "maieutic_question": "What governance structures would protect intellectual freedom under political pressure?",
+        "user_response": "Clear separation between governance (community) and collection decisions; explicit intellectual-freedom commitments"
       }
     ]
   }

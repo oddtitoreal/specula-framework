@@ -4,9 +4,9 @@
     "phase": "0",
     "mode": "sensemaking",
     "generated_at": "2026-03-29T10:00:00Z",
-    "validated_by_human": true,
+    "validated_by_human": false,
     "related_artifacts": [],
-    "decision_rationale": "Activation of Specula Method for a community library seeking to formalize governance around collection curation and community voice in decision-making.",
+    "decision_rationale": "Activation of the Specula Method for a community library seeking to formalize governance around collection curation and community voice in decision-making.",
     "evidence_refs": [
       "Library board meeting notes (2026-03-15)",
       "Community survey on collection preferences (n=127)"

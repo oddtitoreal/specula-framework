@@ -2,50 +2,76 @@
   "meta": {
     "artifact_id": "basic-case-phase-1.5",
     "phase": "1.5",
-    "mode": "exploration",
+    "mode": "convergence",
     "generated_at": "2026-03-29T12:30:00Z",
-    "validated_by_human": true,
-    "related_artifacts": ["basic-case-phase-1"],
-    "decision_rationale": "Competitive map identifies how the library differentiates from digital platforms and corporate community spaces. Critical for positioning collection and governance model.",
+    "validated_by_human": false,
+    "related_artifacts": [
+      "basic-case-phase-1"
+    ],
+    "decision_rationale": "The competitive map identifies how the library differentiates from digital platforms and corporate community spaces, and where the strategic white spaces are.",
     "evidence_refs": [
       "Amazon/Google services analysis",
-      "Competing bookstores and cafes in area",
+      "Competing bookstores and cafes in the area",
       "Other library governance models (3 case studies)"
     ],
     "tradeoffs": [
       "May reveal uncomfortable truths about competitive disadvantage",
-      "Requires honest assessment of library's actual vs. perceived value"
+      "Requires honest assessment of the library's actual vs. perceived value"
     ],
     "rejected_alternatives": [
-      "Ignoring competitive landscape (risk of obsolescence)",
-      "Competing on features where we'll always lose (speed, convenience)"
+      "Ignoring the competitive landscape (risk of obsolescence)",
+      "Competing on features where we always lose (speed, convenience)"
     ]
   },
   "payload": {
-    "competitors": [
+    "competitive_map": [
       {
-        "competitor_id": "amazon-market",
-        "name": "Amazon & Digital Commerce",
-        "positioning": "On-demand, infinite selection, convenience, personalized algorithms",
-        "strengths": ["Instant delivery", "Perfect personalization", "24/7 access"],
-        "weaknesses": ["No community", "Algorithm-driven curation", "Corporate ownership"],
-        "library_differentiation": "Human curation, community values, local trust, serendipity"
+        "competitor": "Amazon & Digital Commerce",
+        "future_trajectory": "Deeper algorithmic personalization and on-demand delivery become the default way people discover content.",
+        "occupied_territory": "Convenience, infinite selection, instant access.",
+        "ignored_territories": [
+          "Human curation",
+          "Community trust",
+          "Serendipitous discovery",
+          "Equity of access"
+        ],
+        "confidence_level": "high"
       },
       {
-        "competitor_id": "coffee-shop",
-        "name": "Coffee Shop & Bookstore",
-        "positioning": "Aesthetics, social gathering, experience",
-        "strengths": ["Pleasant ambiance", "Curated selection", "Integrated commerce"],
-        "weaknesses": ["Expensive", "Selection limited", "Profit-driven"],
-        "library_differentiation": "Free access, comprehensive collection, community-driven collection, equity focus"
+        "competitor": "Coffee Shop & Bookstore",
+        "future_trajectory": "Premiumized social spaces monetize aesthetics and curated selection for paying customers.",
+        "occupied_territory": "Ambiance, social gathering, curated retail experience.",
+        "ignored_territories": [
+          "Free access",
+          "Comprehensive collection",
+          "Community-driven curation"
+        ],
+        "confidence_level": "medium"
       },
       {
-        "competitor_id": "civic-space",
-        "name": "Parks, Community Centers, Civic Spaces",
-        "positioning": "Community gathering, free/low-cost, accessible",
-        "strengths": ["Low cost", "Accessible", "Community focus"],
-        "weaknesses": ["No information/learning resources", "Fragmented purpose"],
-        "library_differentiation": "Knowledge + community integration, intellectual freedom, diverse perspectives"
+        "competitor": "Parks & Community Centers",
+        "future_trajectory": "Civic gathering spaces expand but remain disconnected from knowledge and learning resources.",
+        "occupied_territory": "Low-cost accessible community gathering.",
+        "ignored_territories": [
+          "Knowledge resources",
+          "Intellectual freedom",
+          "Diverse perspectives"
+        ],
+        "confidence_level": "medium"
+      }
+    ],
+    "white_spaces": [
+      {
+        "white_space_id": "ws-curation-trust",
+        "description": "Human-curated, community-governed knowledge with transparent, non-algorithmic collection decisions.",
+        "strategic_risk": "low",
+        "alignment_with_brand": "high"
+      },
+      {
+        "white_space_id": "ws-federated-autonomy",
+        "description": "Interoperable governance across libraries that preserves local autonomy and community accountability.",
+        "strategic_risk": "medium",
+        "alignment_with_brand": "high"
       }
     ]
   }
