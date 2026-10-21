@@ -25,6 +25,8 @@ EXAMPLE_SCHEMA_MAP = {
     "phase-4-narrative.json": "phase4_narrative_system.schema.json",
     "phase-5-cocreation.json": "phase5_cocreation.schema.json",
     "phase-6-guardian.json": "phase6_guardian.schema.json",
+    "preferable-future.json": "preferable_future.schema.json",
+    "decision-log.json": "decision_log.schema.json",
 }
 
 

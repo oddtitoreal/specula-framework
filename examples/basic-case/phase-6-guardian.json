@@ -49,7 +49,22 @@
         ]
       },
       "divergence_level": "drift",
-      "recommended_action": "correct"
+      "recommended_action": "correct",
+      "drift_classification": [
+        {
+          "drift": "Fast-track lane briefly exceeded its 10% budget cap in one month",
+          "class": "error",
+          "rule_applied": "Breaches a red line of the Strategic Protocol: the fast-track lane may not exceed 10% of the acquisitions budget.",
+          "action": "correct"
+        }
+      ],
+      "expected_vs_observed": [
+        {
+          "decision_ref": "DL-002",
+          "expected_effect": "Urgent community requests served within two weeks without displacing curated breadth",
+          "observed_effect": "Cap exceeded in May; requests concentrated on two titles"
+        }
+      ]
     }
   }
 }

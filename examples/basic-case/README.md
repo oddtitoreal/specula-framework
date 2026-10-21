@@ -23,15 +23,15 @@ The library formally enters the SPECULA process. Key decision: This is not a sma
 ### Phase 1: Scenarios
 **File:** `phase-1-scenarios.json`
 
-The library explores four possible futures across 10 years:
+The library explores four possible futures across 10 years, one per generic future (growth, collapse, discipline, transformation). Closed megatrends appear in all four:
 
-1. **Civic Hub (Preferred):** Library becomes true community center; stable funding; hybrid physical/digital thrives
-2. **Irrelevance (Feared):** Budget cuts; digital replaces physical; library marginalized
-3. **Hyperlocal Powerhouse (Wild Card):** Backlash against corporate platforms; library becomes hub of community-controlled network
-4. **Politicized & Captured (Negative):** Library becomes battleground; independence lost; community loses trust
+1. **Civic Hub (Growth):** Library becomes true community center; stable funding; hybrid physical/digital thrives
+2. **Irrelevance (Collapse):** Budget cuts; digital replaces physical; library marginalized
+3. **Hyperlocal Powerhouse (Transformation):** Backlash against corporate platforms; library becomes hub of community-controlled network
+4. **Politicized & Captured (Discipline):** Library becomes battleground; independence lost; community loses trust. Built against the library's strongest value, intellectual freedom.
 
 **Why this matters:**
-Each scenario reveals what governance structure would be needed to thrive OR survive in that future. The "Civic Hub" scenario shows what we want. The "Politicized" scenario shows what we must guard against.
+Each scenario reveals what governance structure would be needed to thrive OR survive in that future. The scenarios are the test bed for the brand DNA in Phase 2; the preferable future is designed later, in Phase 4 (`preferable-future.json`).
 
 **Output:** Four tested scenarios; implicit governance requirements for each
 
@@ -93,8 +93,10 @@ Prototypes let us learn which governance model feels right *before* we commit. R
 
 ---
 
-### Phase 4: Narrative System
-**File:** `phase-4-narrative.json`
+### Phase 4: Preferable Future and Narrative System
+**Files:** `preferable-future.json`, `phase-4-narrative.json`, `decision-log.json`
+
+Added in framework 1.3: the preferable future is designed after the four scenarios and connected to today through backcasting; the Decision Log records each decision with the criterion applied, the expected effect and a review date (the example is produced in Phase 5 and reviewed by the Guardian in Phase 6).
 
 The library translates its identity into language that resonates with different audiences:
 

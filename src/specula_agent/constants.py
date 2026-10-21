@@ -27,6 +27,8 @@ ALLOWED_MODES = {
     "sensemaking",
     "slowdown",
     "refusal",
+    "decision_log",
+    "preferable_future",
 }
 
 PHASE_DEFAULT_MODE = {

@@ -61,6 +61,18 @@ SCHEMA_SQL = dedent(
       generated_at TIMESTAMP NOT NULL
     );
 
+    CREATE TABLE IF NOT EXISTS decision_log (
+      decision_id TEXT PRIMARY KEY,
+      project_id TEXT NOT NULL REFERENCES projects(project_id),
+      decided_on DATE NOT NULL,
+      decision TEXT NOT NULL,
+      criterion TEXT NOT NULL,
+      expected_effect TEXT NOT NULL,
+      review_date DATE NOT NULL,
+      observed_effect TEXT,
+      status TEXT NOT NULL CHECK (status IN ('open', 'reviewed'))
+    );
+
     CREATE TABLE IF NOT EXISTS audit_logs (
       event_id TEXT PRIMARY KEY,
       project_id TEXT NOT NULL REFERENCES projects(project_id),
@@ -79,6 +91,9 @@ SCHEMA_SQL = dedent(
 
     CREATE INDEX IF NOT EXISTS idx_guardian_project_quarter
       ON guardian_reports(project_id, quarter);
+
+    CREATE INDEX IF NOT EXISTS idx_decisions_project_review
+      ON decision_log(project_id, review_date);
 
     CREATE INDEX IF NOT EXISTS idx_audit_project_created
       ON audit_logs(project_id, created_at);

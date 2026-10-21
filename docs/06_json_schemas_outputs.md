@@ -315,6 +315,23 @@ Every SPECULA output must include the following wrapper:
 
 ---
 
+## 10.1 ADDITIONS IN 1.3 (specula-method 2.0)
+
+All additions are optional in 1.3 and listed here for integrators. `preferred` remains valid as `scenario_type` but is deprecated and will be removed in 2.0.
+
+| Schema | Field | Purpose |
+|---|---|---|
+| `phase0_activation` | `payload.framing` | Research question, time window, working rules, written consensus, threshold evidence |
+| `phase1_scenarios` | `archetype`, `closed_megatrends`, `open_variables`, `built_against_value`, `materialization_indicators` | Scenario construction rule |
+| `phase1_scenarios` | `time_horizon: "15"`, `scenario_type: "exploratory"` | New enum values |
+| `phase2_brand_dna` | `radical_values[].operational_form`, `stress_test`, `documented_decisions` | Value Stress Test on the operational form, judged by a reviewer outside the scenario team |
+| `phase2_brand_dna` | `fragile_values`, `fallen_candidates`, `counterexamples` | What the test excluded |
+| `phase6_guardian` | `drift_classification`, `expected_vs_observed`, `composite_alerts`, `escalation`; `recommended_action: "circle_deliberation"` | Drift classes and Decision Log review |
+| `preferable_future` (new, phase 4, mode `preferable_future`) | `statement`, `horizon`, `rationale`, `backcasting` | Preferable future designed after exploration |
+| `decision_log` (new, phases 4–6, mode `decision_log`) | `decisions[]` with `criterion`, `expected_effect`, `review_date`, `observed_effect` | Criteria as hypotheses |
+
+---
+
 ## 11. ARTIFACT RELATIONSHIPS (LOGICAL DAG)
 
 ```text
