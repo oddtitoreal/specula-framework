@@ -26,8 +26,12 @@ PHASE_PREREQUISITES = {
 PHASE_ORDER = {phase: idx for idx, phase in enumerate(PHASE_SEQUENCE)}
 
 
-GUARDIAN_CRITICAL_LEVELS = {"critical"}
+# Aligned with phase6_guardian.schema.json in 1.3: the schema enum is noise | drift | rupture.
+# Up to 1.2.1 this set held "critical", a value the schema never accepted.
+GUARDIAN_CRITICAL_LEVELS = {"rupture"}
 GUARDIAN_RESPÉCULATE_ACTIONS = {"re_speculate"}
+# Added in 1.3: a drift classified as learning brings the criterion to the Synthesis Circle.
+GUARDIAN_CIRCLE_ACTIONS = {"circle_deliberation"}
 
 
 def _default_continuity_context() -> Dict[str, List[str]]:
@@ -220,7 +224,7 @@ def build_payload_template(phase: str, mode: str) -> Dict[str, Any]:
                             "description": "A relevant weak signal emerging in the target market",
                         }
                     ],
-                    "scenario_type": "preferred",
+                    "scenario_type": "exploratory",
                     "description": "A plausible but tension-rich future context.",
                     "maieutic_question": "What identity cost are we willing to accept in this scenario?",
                     "user_response": None,
@@ -683,6 +687,12 @@ class SpeculaOrchestrator:
                 )
                 self._append_continuity("open_assumptions", alert)
                 self._append_continuity("decision_log", alert)
+            elif recommended_action in GUARDIAN_CIRCLE_ACTIONS:
+                note = (
+                    f"GUARDIAN LEARNING [{_now_iso()}]: a drift classified as learning "
+                    "requires a Synthesis Circle deliberation on the criterion it contradicts."
+                )
+                self._append_continuity("decision_log", note)
 
     def _append_continuity(self, key: str, value: str, max_items: int = 25) -> None:
         if not value:

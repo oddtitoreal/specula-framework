@@ -7,6 +7,33 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [1.3.0] - 2026-10-21
+
+Carries `specula-method` 2.0 into the runtime. All schema additions are optional; existing artifacts remain valid.
+
+### Added
+- `schemas/preferable_future.schema.json`: preferable future with backcasting per scenario (phase `4`, mode `preferable_future`).
+- `schemas/decision_log.schema.json`: decisions with criterion, expected effect, review date and observed effect (phases `4` to `6`, mode `decision_log`).
+- `phase0_activation`: optional `framing` (research question, time window, working rules, written consensus, threshold evidence).
+- `phase1_scenarios`: optional `archetype`, `closed_megatrends`, `open_variables`, `built_against_value`, `materialization_indicators`; `time_horizon` accepts `15`; `scenario_type` accepts `exploratory`.
+- `phase2_brand_dna`: optional `operational_form`, `stress_test` and `documented_decisions` per radical value; optional `fragile_values`, `fallen_candidates`, `counterexamples`.
+- `phase6_guardian`: optional `drift_classification` (`error`, `model_superseded`, `learning`), `expected_vs_observed`, `composite_alerts`, `escalation`; `recommended_action` accepts `circle_deliberation`.
+- Runtime: modes `decision_log` and `preferable_future`; schema routing for both; `GUARDIAN_CIRCLE_ACTIONS` records a Circle deliberation in the continuity log when a drift is classified as learning.
+- Persistence: `decision_log` table and index (`sql/` and `storage.py`).
+- Examples: `preferable-future.json`, `decision-log.json`; phases 0, 1, 2, 6 of the basic case use the new fields.
+- Tests: `tests/test_method_v2_alignment.py`; new examples added to the schema contract test.
+
+### Changed
+- `GUARDIAN_CRITICAL_LEVELS` is now `{"rupture"}`. Up to 1.2.1 it held `"critical"`, a value `phase6_guardian` never accepted, so a rupture without `re_speculate` raised no alert.
+- `docs/15_circolo_di_sintesi_governance.md` (1.1): Guardian table aligned with the schema enums; rule for Circles of four people.
+- `docs/06_json_schemas_outputs.md`: section 10.1 lists the 1.3 additions.
+- `specs/terminology.md` (1.2): new terms and modes.
+- `VERSIONS.md`, `ALIGNMENT.md`, `README.md`: five repositories, current versions, synchronization rule for workshops.
+- Orchestrator seed scenario uses `scenario_type: exploratory`.
+
+### Deprecated
+- `scenario_type: "preferred"`: the preferable future is designed in Phase 4. Removal planned for 2.0.
+
 ## [1.2.1] - 2026-06-04
 
 ### Removed

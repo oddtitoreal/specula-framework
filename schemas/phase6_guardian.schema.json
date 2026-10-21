@@ -102,7 +102,63 @@
             "divergence_level": { "type": "string", "enum": ["noise", "drift", "rupture"] },
             "recommended_action": {
               "type": "string",
-              "enum": ["monitor", "correct", "re_speculate"]
+              "enum": ["monitor", "correct", "re_speculate", "circle_deliberation"]
+            },
+            "drift_classification": {
+              "type": "array",
+              "description": "Added in 1.3 (optional). Every drift classified with the rule that produced the class.",
+              "items": {
+                "type": "object",
+                "additionalProperties": false,
+                "required": ["drift", "class", "rule_applied"],
+                "properties": {
+                  "drift": { "type": "string", "minLength": 1 },
+                  "class": { "type": "string", "enum": ["error", "model_superseded", "learning"] },
+                  "rule_applied": { "type": "string", "minLength": 1 },
+                  "action": { "type": "string" }
+                }
+              }
+            },
+            "expected_vs_observed": {
+              "type": "array",
+              "description": "Added in 1.3 (optional). Decision Log entries reviewed this period.",
+              "items": {
+                "type": "object",
+                "additionalProperties": false,
+                "required": ["decision_ref", "expected_effect", "observed_effect"],
+                "properties": {
+                  "decision_ref": { "type": "string", "minLength": 1 },
+                  "expected_effect": { "type": "string", "minLength": 1 },
+                  "observed_effect": { "type": "string", "minLength": 1 }
+                }
+              }
+            },
+            "composite_alerts": {
+              "type": "array",
+              "description": "Added in 1.3 (optional). Alerts fired by combinations of indicators.",
+              "items": {
+                "type": "object",
+                "additionalProperties": false,
+                "required": ["indicators", "rule"],
+                "properties": {
+                  "indicators": {
+                    "type": "array",
+                    "minItems": 2,
+                    "items": { "type": "string", "minLength": 1 }
+                  },
+                  "rule": { "type": "string", "minLength": 1 }
+                }
+              }
+            },
+            "escalation": {
+              "type": "object",
+              "additionalProperties": false,
+              "description": "Added in 1.3 (optional).",
+              "required": ["owner", "deadline"],
+              "properties": {
+                "owner": { "type": "string", "minLength": 1 },
+                "deadline": { "type": "string", "format": "date" }
+              }
             }
           }
         }

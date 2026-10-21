@@ -22,6 +22,10 @@ SCHEMA_FILES: Dict[str, str] = {
 }
 
 
+# Phases in which a Decision Log artifact can be produced (added in 1.3).
+DECISION_LOG_PHASES = ("4", "5", "6")
+
+
 class SchemaValidationError(ValueError):
     """Raised when an artifact fails schema or policy validation."""
 
@@ -40,6 +44,10 @@ def schema_filename_for(phase: str, mode: str) -> str:
     """Resolve schema file for a phase/mode pair."""
     if phase == "3" and mode == "refusal_register":
         return "phase3_refusals.schema.json"
+    if mode == "decision_log" and phase in DECISION_LOG_PHASES:
+        return "decision_log.schema.json"
+    if phase == "4" and mode == "preferable_future":
+        return "preferable_future.schema.json"
     return SCHEMA_FILES[phase]
 
 

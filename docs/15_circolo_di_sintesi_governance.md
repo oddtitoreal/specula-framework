@@ -1,6 +1,6 @@
 # Circolo di Sintesi — Governance Charter
-**Version**: 1.0
-**Date**: 2026-03-27
+**Version**: 1.1
+**Date**: 2026-10-21
 **Status**: Normative (operational governance, not a canonical phase spec)
 **Maintainer**: Specula Project Lead
 
@@ -27,6 +27,8 @@ Il Circolo è composto da **cinque ruoli distinti**, nessuno dei quali può esse
 | **External Auditor** | Presidio dell'indipendenza del Circolo stesso | Esterno al progetto, ruolo rotante, nessun conflitto di interesse |
 
 **Nota**: L'External Auditor è l'unico ruolo che non ha potere di voto ordinario, ma ha potere di **veto sospensivo** (vedi sezione 4).
+
+**Circoli di quattro persone** (aggiunto in 1.1): `specula-bos` descrive un Circolo da quattro a sette persone, distribuite su quattro quadranti disciplinari. In un Circolo di quattro persone una persona può coprire due ruoli; Community Advocate ed External Auditor hanno sempre titolari distinti. Il Community Advocate è il contrappeso alla scelta di affidare i valori al Circolo: rappresenta le persone a cui il brand si rivolge.
 
 ---
 
@@ -108,14 +110,18 @@ La decisione viene sospesa e rimessa alla community (Phase 5 protocol) come inpu
 
 Il Guardian Loop (Phase 6) genera report con `divergence_level` e `recommended_action`. La relazione con il Circolo è la seguente:
 
+Valori allineati a `phase6_guardian.schema.json` (1.3). La versione 1.0 di questa tabella usava valori che lo schema non accetta.
+
 | `divergence_level` | `recommended_action` | Azione del Circolo |
 |---|---|---|
-| `aligned` | `continue` | Nessuna azione richiesta |
+| `noise` | `monitor` | Nessuna azione richiesta |
 | `drift` | `correct` | Informato, nessuna delibera obbligatoria |
-| `significant_drift` | `escalate` | Delibera richiesta entro 30 giorni |
-| `critical` | `re_speculate` | **Delibera urgente entro 7 giorni, ciclo di re-speculation obbligatorio** |
+| `drift` | `circle_deliberation` | Deriva classificata come apprendimento: delibera sul criterio entro 30 giorni |
+| `rupture` | `re_speculate` | **Delibera urgente entro 7 giorni, ciclo di re-speculation obbligatorio** |
 
-Quando il Guardian emette `divergence_level: critical`, il Circolo ha l'obbligo — non la facoltà — di deliberare. L'orchestratore registra questo obbligo nel `continuity_context.decision_log` (vedi `orchestrator.py`, `GUARDIAN_CRITICAL_LEVELS`).
+Ogni deriva riceve una classe nel campo `drift_classification`: `error` (viola una red line), `model_superseded` (il mondo osservato esce da tutti gli scenari), `learning` (ripetuta, spontanea, diffusa, senza red line violate).
+
+Quando il Guardian emette `divergence_level: rupture` o `recommended_action: re_speculate`, il Circolo ha l'obbligo di deliberare. L'orchestratore registra questo obbligo nel `continuity_context.decision_log` (vedi `orchestrator.py`, `GUARDIAN_CRITICAL_LEVELS`).
 
 ---
 

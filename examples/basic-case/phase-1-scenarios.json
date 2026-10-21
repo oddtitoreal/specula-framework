@@ -27,7 +27,7 @@
     "scenarios": [
       {
         "scenario_id": "lib-pref",
-        "name": "Civic Hub (Preferred)",
+        "name": "Civic Hub (Growth)",
         "time_horizon": "10",
         "drivers": [
           {
@@ -43,14 +43,20 @@
             "description": "Digital tools enhance (not replace) physical services; hybrid model thrives"
           }
         ],
-        "scenario_type": "preferred",
+        "scenario_type": "exploratory",
         "description": "Library becomes a true civic hub: expanded programs, robust collection, active community governance, financial stability.",
         "maieutic_question": "What governance structure would best enable and protect this scenario?",
-        "user_response": "A transparent, community-inclusive governance model that formalizes input from patrons and staff"
+        "user_response": "A transparent, community-inclusive governance model that formalizes input from patrons and staff",
+        "archetype": "growth",
+        "closed_megatrends": [
+          "Population ageing in the service area",
+          "Shift of reading and information access to digital channels"
+        ],
+        "built_against_value": null
       },
       {
         "scenario_id": "lib-fear",
-        "name": "Irrelevance (Feared)",
+        "name": "Irrelevance (Collapse)",
         "time_horizon": "10",
         "drivers": [
           {
@@ -69,11 +75,17 @@
         "scenario_type": "feared",
         "description": "Library becomes marginal: reduced hours, minimal collection, volunteer-dependent, declining relevance.",
         "maieutic_question": "What governance guardrails would let the library survive and eventually thrive even here?",
-        "user_response": "Explicit commitment to core values (accessibility, equity, community voice) that survive budget cuts"
+        "user_response": "Explicit commitment to core values (accessibility, equity, community voice) that survive budget cuts",
+        "archetype": "collapse",
+        "closed_megatrends": [
+          "Population ageing in the service area",
+          "Shift of reading and information access to digital channels"
+        ],
+        "built_against_value": null
       },
       {
         "scenario_id": "lib-wild",
-        "name": "Hyperlocal Powerhouse (Wild Card)",
+        "name": "Hyperlocal Powerhouse (Transformation)",
         "time_horizon": "10",
         "drivers": [
           {
@@ -92,11 +104,17 @@
         "scenario_type": "wild_card",
         "description": "Library becomes a node in a federated, community-controlled information network.",
         "maieutic_question": "What governance principles would let us seize this opportunity while staying accountable?",
-        "user_response": "Governance must be interoperable with other libraries while maintaining local autonomy"
+        "user_response": "Governance must be interoperable with other libraries while maintaining local autonomy",
+        "archetype": "transformation",
+        "closed_megatrends": [
+          "Population ageing in the service area",
+          "Shift of reading and information access to digital channels"
+        ],
+        "built_against_value": null
       },
       {
         "scenario_id": "lib-neg",
-        "name": "Politicized & Captured (Negative)",
+        "name": "Politicized & Captured (Discipline)",
         "time_horizon": "10",
         "drivers": [
           {
@@ -115,7 +133,13 @@
         "scenario_type": "negative",
         "description": "Library loses independence; becomes a tool of a political faction; community loses trust.",
         "maieutic_question": "What governance structures would protect intellectual freedom under political pressure?",
-        "user_response": "Clear separation between governance (community) and collection decisions; explicit intellectual-freedom commitments"
+        "user_response": "Clear separation between governance (community) and collection decisions; explicit intellectual-freedom commitments",
+        "archetype": "discipline",
+        "closed_megatrends": [
+          "Population ageing in the service area",
+          "Shift of reading and information access to digital channels"
+        ],
+        "built_against_value": "Intellectual freedom"
       }
     ]
   }

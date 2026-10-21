@@ -68,15 +68,15 @@ See:
 - **`specs/terminology.md`** — canonical term definitions (phase, phase-id, schema, etc.)
 - **`specs/versioning.md`** — framework versioning policy
 - **`ALIGNMENT.md`** — cross-repository ownership rules (who maintains what)
-- **`VERSIONS.md`** — version matrix across all three repos
+- **`VERSIONS.md`** — version matrix across the five repositories
 
 ## Version & Changelog
 
 See:
 - **`CHANGELOG.md`** — release history with semver tags and formal change documentation
-- **`VERSIONS.md`** — version alignment across specula-method, specula-skill, specula-framework
+- **`VERSIONS.md`** — version alignment across specula-method, specula-bos, specula-skill, specula-framework, specula-handbook
 
-Current version: **1.2.0** (2026-03-27)
+Current version: **1.3.0** (2026-10-21)
 
 ## Getting Started Locally
 

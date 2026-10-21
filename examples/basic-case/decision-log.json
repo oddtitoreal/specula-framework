@@ -1,0 +1,62 @@
+{
+  "meta": {
+    "artifact_id": "basic-case-decision-log",
+    "phase": "5",
+    "mode": "decision_log",
+    "generated_at": "2026-07-20T10:00:00Z",
+    "validated_by_human": false,
+    "related_artifacts": [
+      "basic-case-phase-4"
+    ],
+    "decision_rationale": "Decisions are recorded with the criterion applied and the expected effect, so that the Guardian can compare expected and observed effects at the review date.",
+    "evidence_refs": [
+      "Strategic Protocol criteria",
+      "Board minutes 2026-04"
+    ],
+    "tradeoffs": [
+      "Recording expected effects slows routine decisions",
+      "Review dates add a quarterly workload"
+    ],
+    "rejected_alternatives": [
+      "Logging decisions without expected effects",
+      "Reviewing criteria only when a crisis occurs"
+    ]
+  },
+  "payload": {
+    "decisions": [
+      {
+        "decision_id": "DL-001",
+        "date": "2026-04-10",
+        "decision": "Publish quarterly refusal summaries",
+        "criterion": "Community voice: a collection decision the community cannot read is not a valid choice",
+        "expected_effect": "Fewer formal complaints about removals",
+        "review_date": "2026-07-10",
+        "observed_effect": "Complaints fell from 9 to 3 in the quarter",
+        "status": "reviewed"
+      },
+      {
+        "decision_id": "DL-002",
+        "date": "2026-04-15",
+        "decision": "Introduce a fast-track acquisition lane capped at 10% of the budget",
+        "criterion": "Equity of access: a service that favors those who ask loudest is not a valid choice",
+        "expected_effect": "Urgent community requests served within two weeks without displacing curated breadth",
+        "review_date": "2026-07-15",
+        "observed_effect": "Cap exceeded in May; requests concentrated on two titles",
+        "status": "reviewed",
+        "minority_positions": [
+          "One member argued that the lane rewards the most vocal patrons"
+        ]
+      },
+      {
+        "decision_id": "DL-003",
+        "date": "2026-06-02",
+        "decision": "Pilot a federated catalog with two peer libraries",
+        "criterion": "Community voice: shared infrastructure must keep local curation decisions local",
+        "expected_effect": "Wider access without loss of local collection choices",
+        "review_date": "2026-12-02",
+        "observed_effect": null,
+        "status": "open"
+      }
+    ]
+  }
+}

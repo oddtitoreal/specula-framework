@@ -30,7 +30,48 @@
         {
           "value": "Intellectual freedom",
           "tested_in": "A 2025 challenge to remove several titles from the shelves after political pressure.",
-          "cost_paid": "Lost a conditional grant tied to removing the contested titles."
+          "cost_paid": "Lost a conditional grant tied to removing the contested titles.",
+          "operational_form": "If a decision removes lawful material under political or commercial pressure, it is not a valid choice.",
+          "stress_test": [
+            {
+              "scenario_id": "lib-pref",
+              "holds": true,
+              "judged_by": "External reviewer, regional library association"
+            },
+            {
+              "scenario_id": "lib-fear",
+              "holds": true,
+              "judged_by": "External reviewer, regional library association"
+            },
+            {
+              "scenario_id": "lib-wild",
+              "holds": true,
+              "judged_by": "External reviewer, regional library association"
+            },
+            {
+              "scenario_id": "lib-neg",
+              "holds": true,
+              "judged_by": "External reviewer, regional library association",
+              "notes": "Holds at the cost of the conditional grant; the scenario was built against this value."
+            }
+          ],
+          "documented_decisions": [
+            {
+              "description": "2025 refusal to remove contested titles",
+              "source_type": "document",
+              "reference": "Board minutes 2025-06"
+            },
+            {
+              "description": "Retention of a challenged local newspaper archive",
+              "source_type": "interview",
+              "reference": "Interview with the head librarian"
+            },
+            {
+              "description": "Public statement on the 2025 challenge",
+              "source_type": "document",
+              "reference": "Library website, 2025-07"
+            }
+          ]
         },
         {
           "value": "Equity of access",
@@ -52,6 +93,23 @@
         "Algorithmic collection decisions driven by engagement metrics",
         "Censorship of lawful materials under political or commercial pressure",
         "Selling or brokering patron data"
+      ],
+      "fragile_values": [
+        "Physical-first delivery"
+      ],
+      "fallen_candidates": [
+        {
+          "value": "Neutrality on local controversies",
+          "scenario_id": "lib-neg",
+          "reason": "In a captured institution, neutrality turns into silence about censorship."
+        }
+      ],
+      "counterexamples": [
+        {
+          "decision": "2023 withdrawal of a local history exhibit after complaints",
+          "value_betrayed": "Intellectual freedom",
+          "reference": "Board minutes 2023-11"
+        }
       ],
       "tensions": {
         "acceptable": [

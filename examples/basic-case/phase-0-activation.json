@@ -24,6 +24,26 @@
     "activation_status": "active",
     "current_phase": 0,
     "context_set": true,
-    "next_required_input": "Proceed to Phase 1: define future scenarios for the library's role in the community"
+    "next_required_input": "Proceed to Phase 1: define future scenarios for the library's role in the community",
+    "framing": {
+      "research_question": "How can the library protect intellectual freedom while giving the community a real voice in collection decisions?",
+      "time_window": "2026-2036",
+      "working_rules": [
+        "Contributions are collected in writing before discussion",
+        "The board chair speaks last"
+      ],
+      "consensus": {
+        "signed_by": [
+          "Library board chair",
+          "Head librarian"
+        ],
+        "date": "2026-03-29"
+      },
+      "threshold_evidence": {
+        "recognized_crisis": "Board minutes of 2026-03-15 name the collection conflict as a governance failure.",
+        "real_mandate": "The board chair signs the engagement and decides on budget and collection policy.",
+        "willingness_to_subtract": "The board lists the informal veto of senior staff on acquisitions as something it is ready to remove."
+      }
+    }
   }
 }

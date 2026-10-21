@@ -8,6 +8,8 @@ Related repositories:
 - `specula-framework` (this repo)
 - `specula-method`: <https://github.com/oddtitoreal/specula-method>
 - `specula-skill`: <https://github.com/oddtitoreal/specula-skill>
+- `specula-bos`: <https://github.com/oddtitoreal/specula-bos>
+- `specula-handbook`: <https://github.com/oddtitoreal/specula-handbook>
 
 ## Ownership Matrix
 
@@ -18,6 +20,8 @@ Related repositories:
 | Runtime implementation (`src/`) | `specula-framework` | Source of truth for executable runtime behavior |
 | Strategic method narrative (open profile) | `specula-method` | Public method documentation and facilitation profile |
 | Constitution/state-machine implementation subset | `specula-skill` | Technical subset for governance implementation examples |
+| Product architecture, layers, workshop protocols | `specula-bos` | Changes to the method's workshops start here and in `specula-method` |
+| Operational handbook (Italian) | `specula-handbook` | Mirrors `specula-method` and `specula-bos`; records reference versions in its CHANGELOG |
 
 ## Synchronization Rules
 
@@ -29,6 +33,7 @@ Related repositories:
    - `specula-skill/ALIGNMENT.md` (boundary/mapping section)
 3. Method-level narrative changes in `specula-method` should be consumed by reference, not by silent copy.
 4. `specula-skill` may keep local convenience docs, but canonical ownership must be declared.
+5. Changes to phases or workshops in `specula-method` or `specula-bos` must be reflected in `specula-handbook` and, through it, in the workshop kit and the public site.
 
 ## Practical Rule: Prefer Linking Over Copying
 

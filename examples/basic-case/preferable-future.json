@@ -1,0 +1,97 @@
+{
+  "meta": {
+    "artifact_id": "basic-case-phase-4-preferable-future",
+    "phase": "4",
+    "mode": "preferable_future",
+    "generated_at": "2026-03-29T16:00:00Z",
+    "validated_by_human": false,
+    "related_artifacts": [
+      "basic-case-phase-1",
+      "basic-case-phase-2",
+      "basic-case-phase-3-prototypes"
+    ],
+    "decision_rationale": "The preferable future is designed after the four scenarios, as a project of its own, and connected to today through backcasting in each scenario.",
+    "evidence_refs": [
+      "Phase 1 scenarios",
+      "Phase 2 brand DNA",
+      "Phase 3 prototypes and refusals"
+    ],
+    "tradeoffs": [
+      "A single declared direction narrows the options the board keeps open",
+      "Backcasting exposes steps that fail in the Collapse scenario"
+    ],
+    "rejected_alternatives": [
+      "Selecting the Civic Hub scenario as the preferable future",
+      "Leaving the direction implicit in the narrative system"
+    ]
+  },
+  "payload": {
+    "preferable_future": {
+      "statement": "By 2036 the library is a civic hub governed with its community: every service is free, the collection is curated in public, and refusals are published.",
+      "horizon": "2036",
+      "rationale": "Keeps what the Growth and Transformation scenarios share and guards against the capture described in the Discipline scenario.",
+      "backcasting": [
+        {
+          "scenario_id": "lib-pref",
+          "steps": [
+            {
+              "step": "Community collection council with published minutes",
+              "years_from_now": 1,
+              "holds": true
+            },
+            {
+              "step": "Federated catalog with two peer libraries",
+              "years_from_now": 4,
+              "holds": true
+            }
+          ]
+        },
+        {
+          "scenario_id": "lib-fear",
+          "steps": [
+            {
+              "step": "Community collection council with published minutes",
+              "years_from_now": 1,
+              "holds": true
+            },
+            {
+              "step": "Federated catalog with two peer libraries",
+              "years_from_now": 4,
+              "holds": false
+            }
+          ]
+        },
+        {
+          "scenario_id": "lib-wild",
+          "steps": [
+            {
+              "step": "Community collection council with published minutes",
+              "years_from_now": 1,
+              "holds": true
+            },
+            {
+              "step": "Federated catalog with two peer libraries",
+              "years_from_now": 4,
+              "holds": true
+            }
+          ]
+        },
+        {
+          "scenario_id": "lib-neg",
+          "steps": [
+            {
+              "step": "Community collection council with published minutes",
+              "years_from_now": 1,
+              "holds": true
+            },
+            {
+              "step": "Independent appeal process for removal requests",
+              "years_from_now": 2,
+              "holds": true
+            }
+          ]
+        }
+      ]
+    }
+  }
+}
