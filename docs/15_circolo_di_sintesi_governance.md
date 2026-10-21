@@ -39,7 +39,7 @@ Il Circolo delibera obbligatoriamente su:
 - Avanzamento di fase dopo Phase 3 (Ethical Gate) con esito HOLD o REJECT
 - Qualsiasi modifica ai `radical_values` dichiarati in Phase 2
 - Decisioni di refusal che abbiano `opportunity_cost` classificato come "significativo"
-- Guardian reports con `divergence_level: critical` o `recommended_action: re_speculate`
+- Guardian reports con `divergence_level: rupture`, `recommended_action: re_speculate` o `recommended_action: circle_deliberation`
 - Modifica o deroga a qualsiasi principio della AI Constitution
 - Lancio di nuovi settori o mercati non previsti nel Speculative Identity Model
 
@@ -60,7 +60,7 @@ Il Circolo **non delibera** su:
 
 ### 4.2 Maggioranza qualificata (4/5, richiesta per)
 - Avanzamento di fase con Ethical Gate in HOLD
-- Guardian alert con `divergence_level: critical`
+- Guardian alert con `divergence_level: rupture`
 - Lancio in nuovi settori non previsti
 
 ### 4.3 Maggioranza semplice (3/5, richiesta per)
